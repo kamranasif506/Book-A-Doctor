@@ -10,7 +10,9 @@ const Navigation = () => {
         <div className="line"></div>
         <div className="line"></div>
       </div>
+      
       <h1>BookDoc</h1>
+
       <ul>
         <li>
           <Link to='/doctors'>Doctors</Link>
