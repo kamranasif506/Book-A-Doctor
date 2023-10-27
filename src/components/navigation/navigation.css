@@ -1,0 +1,135 @@
+/*
+The nav is on the left side of the page. It is a vertical list of links.
+It can be collapsed to a hamburger menu on smaller screens.
+Write css for:
+<nav>
+        <h1>BookDoc</h1>
+      <ul>
+        <li>
+          <Link to='/'>Doctors</Link>
+        </li>
+        <li>
+          <Link to='/'>Reserve</Link>
+        </li>
+        <li>
+          <Link to='/'>My reservations</Link>
+        </li>
+        <li>
+          <Link to='/'>Add doctor</Link>
+        </li>
+        <li>
+          <Link to='/'>Delete doctor</Link>
+        </li>
+      </ul>
+    </nav> */
+
+nav {
+  background-color: #f5f5f5;
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+nav h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2rem;
+  display: block;
+  padding: 10px 0;
+}
+
+nav ul li a:hover {
+  color: #000;
+}
+
+nav ul li a.active {
+  color: #000;
+}
+
+/* <div className="hamburger">
+        <div className="line"></div>
+        <div className="line"></div>
+        <div className="line"></div>
+      </div> */
+
+.hamburger {
+  width: 30px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+}
+
+.hamburger .line:nth-child(2) {
+  width: 50%;
+}
+
+.hamburger .line:nth-child(3) {
+  width: 75%;
+}
+
+nav .hamburger {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  nav {
+    width: 100%;
+    height: 60px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav .hamburger {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  nav .hamburger:hover {
+    color: #000;
+  }
+
+  nav .hamburger.active {
+    color: #000;
+  }
+
+  nav .hamburger.active ~ ul {
+    display: block;
+  }
+}
