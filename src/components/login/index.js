@@ -12,13 +12,13 @@ const LoginPage = () => {
   };
 
   return (
-    <div id='login-container'>
-      <div className='login-div'>
+    <div id="login-container">
+      <div className="login-div">
         <h1>BookDoc</h1>
 
-        <form id='login-form'>
-          <input type='text' placeholder='Enter your username...' onChange={(e) => setUsername(e.target.value)} />
-          <button type='submit' onClick={navigateHomeHandler}>
+        <form id="login-form">
+          <input type="text" placeholder="Enter your username..." onChange={(e) => setUsername(e.target.value)} />
+          <button type="submit" onClick={navigateHomeHandler}>
             Login
           </button>
         </form>

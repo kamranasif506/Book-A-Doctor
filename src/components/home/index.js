@@ -1,10 +1,10 @@
 import React from 'react';
 import Navigation from '../navigation';
 
-const Home = () => {
-  return <main>
+const Home = () => (
+  <main>
     <Navigation />
-  </main>;
-};
+  </main>
+);
 
 export default Home;
