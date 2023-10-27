@@ -9,7 +9,7 @@ export const fetchTests = createAsyncThunk(
   async () => {
     const res = await axios.get(testsURL);
     return res.data;
-  }
+  },
 );
 
 const initialState = {
@@ -23,6 +23,7 @@ const testSlice = createSlice({
   reducers: {
     testReducer: (state, action) => {
       const data = action.payload;
+      state.tests = data;
     },
   },
   extraReducers: (builder) => {
@@ -33,7 +34,7 @@ const testSlice = createSlice({
     builder.addCase(fetchTests.fulfilled, (state, action) => {
       state.isLoading = false;
       const res = action.payload;
-      state.tests = testsData;
+      state.tests = res;
     });
   },
 });

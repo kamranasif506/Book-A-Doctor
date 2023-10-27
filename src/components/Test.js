@@ -1,7 +1,5 @@
 import React from 'react';
 
-const Test = () => {
-  return <div>Test</div>;
-};
+const Test = () => <div>Test</div>;
 
 export default Test;
