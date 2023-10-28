@@ -10,15 +10,23 @@ import LoginPage from './components/login';
 import Home from './components/home';
 import './App.css';
 import Navigation from './components/navigation';
+import PrivateRoute from './components/auth/PrivateRoute';
+import Register from './components/register';
 
 function App() {
+  const isAuthed = true;
+
   return (
     <Provider store={store}>
       <Router>
-        <Navigation />
+        {isAuthed && <Navigation />}
         <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route exact path='/' exact element={<PrivateRoute />}>
+            <Route path='/' element={<Home />} />
+            <Route path='/doctors' element={<Home />} />
+          </Route>
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='register' element={<Register />} />
         </Routes>
       </Router>
     </Provider>
