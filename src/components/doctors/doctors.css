@@ -30,14 +30,14 @@
   padding: 1rem;
 }
 
-#scroll-left,
-#scroll-right {
+.arrow {
   position: absolute;
   top: 50%;
   width: 4rem;
   height: 4rem;
   background-color: #97bf10;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(86, 196, 8, 0.5);
 }
 
 #scroll-left {
@@ -50,4 +50,12 @@
   right: 0;
   border-top-left-radius: 50%;
   border-bottom-left-radius: 50%;
+}
+
+.icon {
+  font-size: 1.5rem;
+}
+
+.white.icon {
+  color: #fff;
 }
