@@ -36,4 +36,5 @@
     }
   ],
   "ignorePatterns": ["dist/", "build/"]
+  // "ignorePatterns": ["*"]
 }
