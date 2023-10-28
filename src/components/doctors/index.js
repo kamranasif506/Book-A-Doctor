@@ -70,7 +70,7 @@ const Doctors = () => {
         aria-label='Scroll left'
         onClick={() => docScrollHandler('left')}
       >
-        <BsCaretLeft class='white icon' />
+        <BsCaretLeft className='white icon' />
       </button>
       <button
         id='scroll-right'
@@ -79,7 +79,7 @@ const Doctors = () => {
         aria-label='Scroll right'
         onClick={() => docScrollHandler('right')}
       >
-        <BsCaretRight class='white icon' />
+        <BsCaretRight className='white icon' />
       </button>
     </section>
   );

@@ -4,6 +4,19 @@
   box-sizing: border-box;
   transition: all 0.3s ease-in-out;
   scroll-behavior: smooth;
+  ::-webkit-scrollbar {
+    height: 2px;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #97bf10;
+    border-radius: 10px;
+  }
 }
 
 button {

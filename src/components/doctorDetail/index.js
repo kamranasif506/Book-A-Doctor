@@ -40,7 +40,7 @@ const DoctorDetail = () => {
 
         <button type='button'>
           {' '}
-          <AiOutlineSetting class='white icon' /> Reserve
+          <AiOutlineSetting className='white icon' /> Reserve
         </button>
       </div>
 
@@ -51,7 +51,7 @@ const DoctorDetail = () => {
         aria-label='Go Back'
         onClick={() => navigate('/doctors')}
       >
-        <BsCaretLeft class='white icon' />
+        <BsCaretLeft className='white icon' />
       </button>
     </section>
   );
