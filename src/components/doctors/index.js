@@ -68,7 +68,7 @@ const Doctors = () => {
         aria-label="Scroll left"
         onClick={() => docScrollHandler('left')}
       >
-        Scroll Left
+        .
       </button>
       <button
         id="scroll-right"
