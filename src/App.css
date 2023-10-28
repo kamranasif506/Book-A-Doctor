@@ -37,3 +37,9 @@ section {
   background-color: aliceblue;
   position: relative;
 }
+
+@media (max-width: 1000px) {
+  section {
+    width: 100vw;
+  }
+}
