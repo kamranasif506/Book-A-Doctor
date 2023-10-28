@@ -37,6 +37,6 @@ img {
 }
 
 #doctors {
-  background-color: blue;
   display: flex;
+  gap: 5%;
 }
