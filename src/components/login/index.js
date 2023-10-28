@@ -8,7 +8,7 @@ const LoginPage = () => {
 
   const navigateHomeHandler = () => {
     if (!username) return;
-    navigate('/home');
+    navigate('/');
   };
 
   return (

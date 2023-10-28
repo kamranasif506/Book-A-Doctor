@@ -9,6 +9,11 @@
   min-width: 340px;
 }
 
+.doc:hover {
+  background-color: #96bf1025;
+  cursor: pointer;
+}
+
 .doc .photo-div {
   height: 12rem;
   width: 12rem;

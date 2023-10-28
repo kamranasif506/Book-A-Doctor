@@ -1,9 +1,16 @@
 import React from 'react';
-import './doctor.css'
+import { useNavigate } from 'react-router-dom';
+import './doctor.css';
 
 const Doctor = ({ doctor }) => {
+  const navigate = useNavigate();
+
+  const docNavigateHandler = () => {
+    navigate(`/doctors/${doctor.id}`);
+  };
+
   return (
-    <div className='doc'>
+    <div className='doc' onClick={docNavigateHandler}>
       <div className='photo-div'>
         <img src={doctor.photo} alt={doctor.name} />
       </div>

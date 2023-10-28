@@ -15,10 +15,10 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        {/* <Navigation /> */}
+        <Navigation />
         <Routes>
-          <Route path='/' element={<LoginPage />} />
-          <Route path='/home' element={<Home />} />
+          <Route path='/' exact element={<Home />} />
+          <Route path='/login' element={<LoginPage />} />
         </Routes>
       </Router>
     </Provider>
