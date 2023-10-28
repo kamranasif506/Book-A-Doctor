@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import testSlice from './first/testSlice';
+import navSlice from './navbar/navSlice';
 
 const rootReducer = {
-  tests: testSlice.reducer,
+  navbar: navSlice,
 };
 
 const store = configureStore({

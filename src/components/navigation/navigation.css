@@ -107,6 +107,7 @@ nav .hamburger {
     font-size: 2rem;
     margin: 1rem;
     margin-left: auto;
+    cursor: pointer;
   }
 
   nav .hamburger {
