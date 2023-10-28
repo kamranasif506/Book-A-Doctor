@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import randPhoto from '../../hack-4.jpg';
 import { BsCaretLeft } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
-import './doctorDetail.css'
+import { AiOutlineSetting } from 'react-icons/ai';
+import './doctorDetail.css';
 
 const DoctorDetail = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const DoctorDetail = () => {
     fbLink: '',
     twitterLink: '',
     availability: 'available',
-    cost: '$12.00'
+    cost: '$12.00',
   };
 
   return (
@@ -25,11 +26,9 @@ const DoctorDetail = () => {
       <div className='doc-photo-div'>
         <img src={doctor.photo} alt={doctor.name} />
       </div>
+
       <div className='doc-details'>
-        <p>
-          <span>Name</span>
-          <span>{doctor.name}</span>
-        </p>
+        <h2 className='doc-name'>{doctor.name}</h2>
         <p>
           <span>Availability</span>
           <span>{doctor.availability}</span>
@@ -39,7 +38,10 @@ const DoctorDetail = () => {
           <span>{doctor.cost}</span>
         </p>
 
-        <button type='button'>Reserve</button>
+        <button type='button'>
+          {' '}
+          <AiOutlineSetting class='white icon' /> Reserve
+        </button>
       </div>
 
       <button

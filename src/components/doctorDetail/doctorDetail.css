@@ -1,12 +1,6 @@
 /* <section id='doc-detail-section'>
-      <div className='doc-photo-div'>
-        <img src={doctor.photo} alt={doctor.name} />
-      </div>
       <div className='doc-details'>
-        <p>
-          <span>Name</span>
-          <span>{doctor.name}</span>
-        </p>
+        <h2 className='doc-name'>{doctor.name}</h2>
         <p>
           <span>Availability</span>
           <span>{doctor.availability}</span>
@@ -25,12 +19,12 @@
   padding: 1rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  padding-left: 0;
+  justify-content: space-between;
+  padding: 1rem 3rem;
 }
 
 .doc-photo-div {
-  width: 50%;
+  width: 60%;
   height: 70%;
   display: flex;
   justify-content: center;
@@ -45,7 +39,57 @@
   object-fit: cover;
 }
 
+#doc-detail-section .doc-details {
+  width: 40%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+#doc-detail-section .doc-details h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+  text-align: right;
+}
+
+#doc-detail-section .doc-details p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem .8rem;
+}
+
+#doc-detail-section .doc-details p:nth-child(even) {
+  background-color: #6767671e;
+}
+
+#doc-detail-section .doc-details p:nth-child(odd) {
+ text-transform: capitalize;
+}
+
 #doc-detail-section .arrow {
   bottom: 1rem;
   top: unset;
+}
+
+#doc-detail-section .doc-details button {
+  width: 40%;
+  margin-left: auto;
+  height: 3rem;
+  background-color: #97bf10;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#doc-detail-section .doc-details button:hover {
+  background-color: #97bf10c0;
 }
