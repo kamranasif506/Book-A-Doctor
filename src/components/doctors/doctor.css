@@ -1,24 +1,12 @@
-/* const Doctor = ({ doctor }) => {
-  return (
-    <div className='doc'>
-      <div className='photo-div'>
-        <img src={doctor.photo} alt={doctor.name} />
-      </div>
-      <div id='dots'></div>
-      <h5>{doctor.name}</h5>
-      <p>{doctor.desc}</p>
-    </div>
-  );
-}; */
-
 .doc {
   display: grid;
   gap: 1rem;
   text-align: center;
   place-items: center;
-  background-color: bisque;
   padding: 1rem;
   border-radius: 5px;
+  width: 360px;
+  min-width: 340px;
 }
 
 .doc .photo-div {
