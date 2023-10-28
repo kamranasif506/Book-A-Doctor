@@ -1,9 +1,10 @@
 import React from 'react';
-import Navigation from '../navigation';
+import Doctors from '../doctors';
+import './home.css'
 
 const Home = () => (
   <main>
-    <Navigation />
+    <Doctors />
   </main>
 );
 
