@@ -21,6 +21,9 @@ const LoginPage = () => {
           <button type="submit" onClick={navigateHomeHandler}>
             Login
           </button>
+          <button type="button" onClick={()=>navigate('/register')} id='auth-sec'>
+            Register
+          </button>
         </form>
       </div>
     </div>
