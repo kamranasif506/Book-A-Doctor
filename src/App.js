@@ -21,12 +21,12 @@ function App() {
       <Router>
         {isAuthed && <Navigation />}
         <Routes>
-          <Route exact path='/' element={<PrivateRoute />}>
-            <Route path='/' element={<Home />} />
-            <Route path='/doctors' element={<Home />} />
+          <Route exact path="/" element={<PrivateRoute />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/doctors" element={<Home />} />
           </Route>
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<LoginPage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </Router>
     </Provider>
