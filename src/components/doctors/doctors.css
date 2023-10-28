@@ -58,6 +58,10 @@
 }
 
 @media (max-width: 800px) {
+  #docs-div {
+    padding: 1rem;
+  }
+
   #doctors {
     gap: 2%;
     padding: 1rem;

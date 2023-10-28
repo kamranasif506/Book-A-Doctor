@@ -76,3 +76,34 @@
 #doc-detail-section .doc-details button:hover {
   background-color: #97bf10c0;
 }
+
+@media (max-width: 800px) {
+  #doc-detail-section {
+    flex-direction: column;
+    padding: 1rem;
+    margin-top: 4rem;
+  }
+
+  #doc-detail-section .doc-photo-div {
+    width: 100%;
+    height: 50%;
+  }
+
+  #doc-detail-section .doc-details {
+    width: 100%;
+    height: 50%;
+  }
+
+  #doc-detail-section .doc-details h2 {
+    font-size: 1.5rem;
+  }
+
+  #doc-detail-section .doc-details p {
+    padding: 0.6rem 0.8rem;
+  }
+
+  #doc-detail-section .doc-details button {
+    width: 70%;
+    margin: 1rem auto;
+  }
+}
