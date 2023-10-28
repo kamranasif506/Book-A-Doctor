@@ -17,8 +17,8 @@ function App() {
       <Router>
         <Navigation />
         <Routes>
-          <Route path='/' exact element={<Home />} />
-          <Route path='/login' element={<LoginPage />} />
+          <Route path="/" exact element={<Home />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </Router>
     </Provider>

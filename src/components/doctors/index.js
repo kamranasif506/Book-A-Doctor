@@ -4,13 +4,15 @@ import Doctor from './Doctor';
 import './doctors.css';
 
 const Doctors = () => {
-  const docsRef = useRef()
+  const docsRef = useRef();
   const docScrollHandler = (direction) => {
-    if (!docsRef) return;
+    if (!docsRef.current) return;
 
-    direction === 'left'
-      ? (docsRef.current.scrollLeft -= 300)
-      : (docsRef.current.scrollLeft += 300);
+    if (direction === 'left') {
+      docsRef.current.scrollLeft -= 300;
+    } else {
+      docsRef.current.scrollLeft += 300;
+    }
   };
 
   const testDocs = [
@@ -48,26 +50,32 @@ const Doctors = () => {
     },
   ];
   return (
-    <div id='docs-div'>
-      <div className='intro'>
+    <div id="docs-div">
+      <div className="intro">
         <h2>Available Doctors</h2>
         <p>Please select a doctor</p>
-        <div id='dots'></div>
+        <div id="dots" />
       </div>
 
-      <div id='doctors' ref={docsRef}>
+      <div id="doctors" ref={docsRef}>
         {testDocs.map((doc) => (
           <Doctor doctor={doc} key={doc.id} />
         ))}
       </div>
-      <div
-        id='scroll-left'
+      <button
+        id="scroll-left"
+        type="button"
+        aria-label="Scroll left"
         onClick={() => docScrollHandler('left')}
-      ></div>
-      <div
-        id='scroll-right'
+      >
+        Scroll Left
+      </button>
+      <button
+        id="scroll-right"
+        type="button"
+        aria-label="Scroll right"
         onClick={() => docScrollHandler('right')}
-      ></div>
+      />
     </div>
   );
 };

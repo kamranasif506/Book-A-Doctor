@@ -30,8 +30,8 @@
   padding: 1rem;
 }
 
-
-#scroll-left, #scroll-right {
+#scroll-left,
+#scroll-right {
   position: absolute;
   top: 50%;
   width: 4rem;

@@ -1,6 +1,6 @@
 import React from 'react';
 import Doctors from '../doctors';
-import './home.css'
+import './home.css';
 
 const Home = () => (
   <main>
