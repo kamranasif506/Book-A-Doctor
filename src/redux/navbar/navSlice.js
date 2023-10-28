@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  open: false,
+  isOpen: false,
   active: 'home',
 };
 
@@ -10,7 +10,7 @@ const navSlice = createSlice({
   initialState,
   reducers: {
     toggle: (state) => {
-      state.open = !state.open;
+      state.isOpen = !state.isOpen;
     },
     setActive: (state, action) => {
       state.active = action.payload;
