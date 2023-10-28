@@ -42,31 +42,49 @@ const Navigation = () => {
   };
 
   return (
-    <nav id='navigation'>
-      <div
-        className='hamburger'
+    <nav id="navigation">
+      <button
+        type="button"
+        className="hamburger"
         onClick={() => dispatch(navActions.toggle())}
       >
-        <div className='line' />
-        <div className='line' />
-        <div className='line' />
-      </div>
+        <div className="line" />
+        <div className="line" />
+        <div className="line" />
+      </button>
 
       <h1>BookDoc</h1>
 
       <ul className={isOpen ? 'open' : ''}>
-        <TbX
-          className='icon'
-          onClick={() => dispatch(navActions.toggle())}
-        />
+        <li>
+          <button
+            type="button"
+            className="icon"
+            aria-label="close menu"
+            onClick={() => dispatch(navActions.toggle())}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                dispatch(navActions.toggle());
+              }
+            }}
+          >
+            <TbX role="img" />
+          </button>
+        </li>
         {links.map((link) => (
-          <li
+          <button
             key={link.name}
             className={link.name === active ? 'active' : ''}
             onClick={() => linkClickHandler(link.name)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                linkClickHandler(link.name);
+              }
+            }}
+            type="button"
           >
             <Link to={link.path}>{link.name}</Link>
-          </li>
+          </button>
         ))}
       </ul>
     </nav>

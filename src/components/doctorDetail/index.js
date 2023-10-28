@@ -1,9 +1,9 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import randPhoto from '../../hack-4.jpg';
+import { useParams, useNavigate } from 'react-router-dom';
 import { BsCaretLeft } from 'react-icons/bs';
-import { useNavigate } from 'react-router-dom';
+
 import { AiOutlineSetting } from 'react-icons/ai';
+import randPhoto from '../../hack-4.jpg';
 import './doctorDetail.css';
 
 const DoctorDetail = () => {
@@ -11,7 +11,7 @@ const DoctorDetail = () => {
   const { docId } = useParams();
   //   Fetch doctor details
   const doctor = {
-    id: 1,
+    id: docId,
     name: 'doc1',
     photo: randPhoto,
     desc: 'Some description about the doctor. This will be coming from the backend doctors database.',
@@ -22,13 +22,13 @@ const DoctorDetail = () => {
   };
 
   return (
-    <section id='doc-detail-section'>
-      <div className='doc-photo-div'>
+    <section id="doc-detail-section">
+      <div className="doc-photo-div">
         <img src={doctor.photo} alt={doctor.name} />
       </div>
 
-      <div className='doc-details'>
-        <h2 className='doc-name'>{doctor.name}</h2>
+      <div className="doc-details">
+        <h2 className="doc-name">{doctor.name}</h2>
         <p>
           <span>Availability</span>
           <span>{doctor.availability}</span>
@@ -38,20 +38,22 @@ const DoctorDetail = () => {
           <span>{doctor.cost}</span>
         </p>
 
-        <button type='button'>
+        <button type="button">
           {' '}
-          <AiOutlineSetting className='white icon' /> Reserve
+          <AiOutlineSetting className="white icon" />
+          {' '}
+          Reserve
         </button>
       </div>
 
       <button
-        id='scroll-left'
-        className='arrow'
-        type='button'
-        aria-label='Go Back'
+        id="scroll-left"
+        className="arrow"
+        type="button"
+        aria-label="Go Back"
         onClick={() => navigate('/doctors')}
       >
-        <BsCaretLeft className='white icon' />
+        <BsCaretLeft className="white icon" />
       </button>
     </section>
   );

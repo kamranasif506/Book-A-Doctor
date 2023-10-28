@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
+import { BsCaretLeft, BsCaretRight } from 'react-icons/bs';
 import photo from '../../hack-4.jpg';
 import Doctor from './Doctor';
-import { BsCaretLeft, BsCaretRight } from 'react-icons/bs';
 import './doctors.css';
 
 const Doctors = () => {
@@ -51,35 +51,35 @@ const Doctors = () => {
     },
   ];
   return (
-    <section id='docs-div'>
-      <div className='intro'>
+    <section id="docs-div">
+      <div className="intro">
         <h2>Available Doctors</h2>
         <p>Please select a doctor</p>
-        <div id='dots' />
+        <div id="dots" />
       </div>
 
-      <div id='doctors' ref={docsRef}>
+      <div id="doctors" ref={docsRef}>
         {testDocs.map((doc) => (
           <Doctor doctor={doc} key={doc.id} />
         ))}
       </div>
       <button
-        id='scroll-left'
-        className='arrow'
-        type='button'
-        aria-label='Scroll left'
+        id="scroll-left"
+        className="arrow"
+        type="button"
+        aria-label="Scroll left"
         onClick={() => docScrollHandler('left')}
       >
-        <BsCaretLeft className='white icon' />
+        <BsCaretLeft className="white icon" />
       </button>
       <button
-        id='scroll-right'
-        className='arrow'
-        type='button'
-        aria-label='Scroll right'
+        id="scroll-right"
+        className="arrow"
+        type="button"
+        aria-label="Scroll right"
         onClick={() => docScrollHandler('right')}
       >
-        <BsCaretRight className='white icon' />
+        <BsCaretRight className="white icon" />
       </button>
     </section>
   );
