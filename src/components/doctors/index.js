@@ -51,7 +51,7 @@ const Doctors = () => {
     },
   ];
   return (
-    <div id='docs-div'>
+    <section id='docs-div'>
       <div className='intro'>
         <h2>Available Doctors</h2>
         <p>Please select a doctor</p>
@@ -81,7 +81,7 @@ const Doctors = () => {
       >
         <BsCaretRight class='white icon' />
       </button>
-    </div>
+    </section>
   );
 };
 
