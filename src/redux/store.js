@@ -1,9 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-import testSlice from './first/testSlice';
+import { combineReducers } from 'redux';
 
-const rootReducer = {
-  tests: testSlice.reducer,
-};
+import navSlice from './navbar/navSlice';
+// import testSlice from './first/testSlice';
+// import authSlice from './auth/authSlice';
+// import doctorSlice from './doctor/doctorSlice';
+
+const rootReducer = combineReducers({
+  navbar: navSlice.reducer,
+  // tests: testSlice.reducer,
+  // auth: authSlice.reducer,
+  // doctors: doctorSlice.reducer,
+});
 
 const store = configureStore({
   reducer: rootReducer,
