@@ -1,0 +1,6 @@
+main {
+  display: flex;
+  gap: 5rem;
+  height: 100vh;
+  overflow: hidden;
+}
