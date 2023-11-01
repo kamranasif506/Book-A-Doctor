@@ -1,5 +1,7 @@
 import React from 'react';
 import DataTable from 'react-data-table-component';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './reservationList.css';
 
 const ReservationList = () => {
   const columns = [
@@ -36,13 +38,14 @@ const ReservationList = () => {
         <h2>List Of Reservations</h2>
         <div id="dots" />
       </div>
-
-      <div id="ReservationList">
-        <DataTable
-          title="Reservation List"
-          columns={columns}
-          data={data}
-        />
+      <div className="row" id="doctors">
+        <div className="col-12">
+          <DataTable
+            title="Reservation List"
+            columns={columns}
+            data={data}
+          />
+        </div>
       </div>
     </section>
 
