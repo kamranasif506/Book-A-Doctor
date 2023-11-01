@@ -43,6 +43,7 @@ nav ul li {
 nav ul li > * {
   text-align: left;
   width: 100%;
+  text-transform: capitalize;
 }
 
 nav ul li.active {

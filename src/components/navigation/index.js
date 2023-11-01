@@ -7,19 +7,19 @@ import './navigation.css';
 
 const links = [
   {
-    name: 'Home',
+    name: 'home',
     path: '/',
   },
   {
-    name: 'Doctors',
+    name: 'doctors',
     path: '/doctors',
   },
   {
-    name: 'Reserve',
+    name: 'reserve',
     path: '/reserve',
   },
   {
-    name: 'My reservations',
+    name: 'reservations',
     path: '/reservations',
   },
   {
