@@ -7,19 +7,19 @@ import './navigation.css';
 
 const links = [
   {
-    name: 'Home',
+    name: 'home',
     path: '/',
   },
   {
-    name: 'Doctors',
+    name: 'doctors',
     path: '/doctors',
   },
   {
-    name: 'Reserve',
+    name: 'reserve',
     path: '/reserve',
   },
   {
-    name: 'My reservations',
+    name: 'reservations',
     path: '/reservations',
   },
   {
@@ -41,50 +41,49 @@ const Navigation = () => {
     dispatch(navActions.toggle());
   };
 
+  const keyPressHandler = (event, name) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      linkClickHandler(name);
+    }
+  };
+
   return (
     <nav id="navigation">
-      <button
-        type="button"
+      <div
         className="hamburger"
         onClick={() => dispatch(navActions.toggle())}
+        onKeyDown={(event) => keyPressHandler(event)}
+        role="button"
+        tabIndex={0}
       >
         <div className="line" />
         <div className="line" />
         <div className="line" />
-      </button>
+      </div>
 
       <h1>BookDoc</h1>
 
       <ul className={isOpen ? 'open' : ''}>
-        <li>
-          <button
-            type="button"
-            className="icon"
-            aria-label="close menu"
-            onClick={() => dispatch(navActions.toggle())}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                dispatch(navActions.toggle());
-              }
-            }}
-          >
-            <TbX role="img" />
-          </button>
-        </li>
+        <TbX
+          className="icon"
+          onClick={() => dispatch(navActions.toggle())}
+          onKeyDown={(event) => keyPressHandler(event)}
+          role="button"
+          tabIndex={0}
+        />
         {links.map((link) => (
-          <button
+          <li
             key={link.name}
             className={link.name === active ? 'active' : ''}
-            onClick={() => linkClickHandler(link.name)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                linkClickHandler(link.name);
-              }
-            }}
-            type="button"
           >
-            <Link to={link.path}>{link.name}</Link>
-          </button>
+            <button
+              type="button"
+              onClick={() => linkClickHandler(link.name)}
+              onKeyDown={(event) => keyPressHandler(event, link.name)}
+            >
+              <Link to={link.path}>{link.name}</Link>
+            </button>
+          </li>
         ))}
       </ul>
     </nav>

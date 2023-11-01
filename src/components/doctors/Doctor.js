@@ -1,13 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { navActions } from '../../redux/navbar/navSlice';
 import './doctor.css';
 
 const Doctor = ({ doctor }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const docNavigateHandler = () => {
     navigate(`/doctors/${doctor.id}`);
+    dispatch(navActions.setActive('doctors'));
   };
 
   return (
