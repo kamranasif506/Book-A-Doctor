@@ -40,6 +40,11 @@ nav ul li {
   padding: 0;
 }
 
+nav ul li > * {
+  text-align: left;
+  width: 100%;
+}
+
 nav ul li.active {
   background-color: #97bf10;
 }
