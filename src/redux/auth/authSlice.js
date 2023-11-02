@@ -5,7 +5,7 @@ import config from '../../config';
 const initialState = {
   user: null,
   token: localStorage.getItem('token') || null,
-  status: 'idle',
+  status: 'Rejected',
   isLoading: false,
   error: null,
 };

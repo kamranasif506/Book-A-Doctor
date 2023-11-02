@@ -16,6 +16,9 @@ const LoginPage = () => {
     if (errorMessage === 'Rejected') {
       setMessage('Login failed. Please check your credentials.');
     }
+    if (errorMessage === 'Logged in sucessfully.') {
+      navigate('/');
+    }
   }, [errorMessage, dispatch]);
 
   const navigateHomeHandler = (e) => {
@@ -29,7 +32,7 @@ const LoginPage = () => {
     };
     dispatch(LoginAuth(userData))
       .then(() => {
-        navigate('/');
+
       })
       .catch((error) => {
         setMessage(`Login failed. Error: ${error.message}`);
