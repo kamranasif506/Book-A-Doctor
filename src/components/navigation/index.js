@@ -55,6 +55,7 @@ const Navigation = () => {
         onKeyDown={(event) => keyPressHandler(event)}
         role="button"
         tabIndex={0}
+        aria-label="Humburger"
       >
         <div className="line" />
         <div className="line" />
