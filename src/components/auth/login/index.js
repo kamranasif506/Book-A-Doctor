@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { LoginAuth } from '../../../redux/auth/authSlice';
+import { loginAuth } from '../../../redux/auth/authSlice';
 import './login.css';
 
 const LoginPage = () => {

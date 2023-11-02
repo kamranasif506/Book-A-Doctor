@@ -14,12 +14,31 @@ const headers = {
 };
 
 const loginURl = `${config.apiBaseUrl}${config.loginEndpoint}`;
-export const LoginAuth = createAsyncThunk(
+export const loginAuth = createAsyncThunk(
   'auth/login',
   async (data, thunkAPI) => {
     try {
     //   console.log(data);
       const response = await axios.post(loginURl, data, { headers });
+      const user = response.data;
+      const token = response.headers.authorization;
+      localStorage.setItem('token', token);
+      const res = { user, token };
+      return res;
+    } catch (error) {
+      const errorMessage = error.response?.data || 'An error occurred';
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  },
+);
+
+const signupURl = `${config.apiBaseUrl}${config.signupEndpoint}`;
+export const signUpAuth = createAsyncThunk(
+  'auth/login',
+  async (data, thunkAPI) => {
+    try {
+    //   console.log(data);
+      const response = await axios.post(signupURl, data, { headers });
       const user = response.data;
       const token = response.headers.authorization;
       localStorage.setItem('token', token);
@@ -38,21 +57,37 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(LoginAuth.pending, (state) => {
+      .addCase(loginAuth.pending, (state) => {
         state.status = 'pending';
         state.isLoading = true;
       })
-      .addCase(LoginAuth.fulfilled, (state, action) => {
+      .addCase(loginAuth.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload.user.data;
         state.token = action.payload.token;
         state.status = action.payload.user.status.message;
       })
-      .addCase(LoginAuth.rejected, (state, action) => {
+      .addCase(loginAuth.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = 'failed';
+        state.status = action.error.message;
+      })
+      .addCase(signUpAuth.pending, (state) => {
+        state.status = 'pending';
+        state.isLoading = true;
+      })
+      .addCase(signUpAuth.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload.user.data;
+        state.token = action.payload.token;
+        state.status = action.payload.user.status.message;
+      })
+      .addCase(signUpAuth.rejected, (state, action) => {
         state.isLoading = false;
         state.error = 'failed';
         state.status = action.error.message;
       });
+      
   },
 });
 
