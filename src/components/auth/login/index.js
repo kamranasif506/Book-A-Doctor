@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginAuth } from '../../../redux/auth/authSlice';
 import './login.css';
 
 const LoginPage = () => {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [message, setMessage] = React.useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
   const errorMessage = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const LoginPage = () => {
     if (errorMessage === 'Logged in sucessfully.') {
       navigate('/');
     }
-  }, [errorMessage, dispatch]);
+  }, [errorMessage, dispatch, navigate]);
 
   const navigateHomeHandler = (e) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ const LoginPage = () => {
         password,
       },
     };
-    dispatch(LoginAuth(userData))
+    dispatch(loginAuth(userData))
       .then(() => {
 
       })

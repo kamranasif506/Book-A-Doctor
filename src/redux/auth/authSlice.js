@@ -34,7 +34,7 @@ export const loginAuth = createAsyncThunk(
 
 const signupURl = `${config.apiBaseUrl}${config.signupEndpoint}`;
 export const signUpAuth = createAsyncThunk(
-  'auth/login',
+  'auth/signup',
   async (data, thunkAPI) => {
     try {
     //   console.log(data);
@@ -87,7 +87,6 @@ const authSlice = createSlice({
         state.error = 'failed';
         state.status = action.error.message;
       });
-      
   },
 });
 
