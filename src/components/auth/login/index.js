@@ -1,13 +1,30 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
+import { LoginAuth } from '../../../redux/auth/authSlice';
 import './login.css';
 
 const LoginPage = () => {
-  const [username, setUsername] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const navigateHomeHandler = () => {
-    if (!username) return;
+    if (!email || !password) return;
+    const userData = {
+      user: {
+        email: email,
+        password
+      }
+    };
+    dispatch(LoginAuth(userData))
+    .then(() => {
+      navigate('/');
+    })
+    .catch((error) => {
+      console.error('Login failed:', error);
+    });
     navigate('/');
   };
 
@@ -17,7 +34,8 @@ const LoginPage = () => {
         <h1>BookDoc</h1>
 
         <form id="login-form">
-          <input type="text" placeholder="Enter your username..." onChange={(e) => setUsername(e.target.value)} />
+          <input type="email" placeholder="Enter your username..." onChange={(e) => setEmail(e.target.value)} />
+          <input type="password" placeholder="Enter your password..." onChange={(e) => setPassword(e.target.value)} />
           <button type="submit" onClick={navigateHomeHandler}>
             Login
           </button>

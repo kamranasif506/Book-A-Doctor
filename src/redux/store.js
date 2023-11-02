@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 
 import navSlice from './navbar/navSlice';
-import authSlice from './auth/authSlice'
+import authSlice from './auth/authSlice';
 // import testSlice from './first/testSlice';
 // import authSlice from './auth/authSlice';
 // import doctorSlice from './doctor/doctorSlice';
