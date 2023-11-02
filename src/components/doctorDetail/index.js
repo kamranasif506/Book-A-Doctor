@@ -1,13 +1,14 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { BsCaretLeft } from 'react-icons/bs';
-
 import { AiOutlineSetting } from 'react-icons/ai';
-import randPhoto from '../../hack-4.jpg';
+// import randPhoto from 'https://unsplash.com/photos/female-doctor-in-white-coat-holding-blood-test-tubes-in-hands-while-wrapped-up-in-work-at-modern-lab-female-life-science-professional-holding-glass-cuvette-healthcare-and-biotechnology-concept-LXtenj7khic';
 import './doctorDetail.css';
+// import { func } from 'prop-types';
 
 const DoctorDetail = () => {
   const navigate = useNavigate();
+  const randPhoto = 'https://unsplash.com/photos/female-doctor-in-white-coat-holding-blood-test-tubes-in-hands-while-wrapped-up-in-work-at-modern-lab-female-life-science-professional-holding-glass-cuvette-healthcare-and-biotechnology-concept-LXtenj7khic';
   const { docId } = useParams();
   //   Fetch doctor details
   const doctor = {
@@ -19,6 +20,9 @@ const DoctorDetail = () => {
     twitterLink: '',
     availability: 'available',
     cost: '$12.00',
+  };
+  const reservationNavHandler = () => {
+    navigate(`/doctors/${doctor.id}/reservation`);
   };
 
   return (
@@ -38,12 +42,16 @@ const DoctorDetail = () => {
           <span>{doctor.cost}</span>
         </p>
 
-        <button type="button">
+        <button
+          type="button"
+          onClick={reservationNavHandler}
+        >
           {' '}
           <AiOutlineSetting className="white icon" />
           {' '}
           Reserve
         </button>
+
       </div>
 
       <button

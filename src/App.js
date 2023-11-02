@@ -13,6 +13,7 @@ import Navigation from './components/navigation';
 import PrivateRoute from './components/auth/PrivateRoute';
 import Register from './components/auth/register';
 import DoctorDetail from './components/doctorDetail';
+import Appointment from './components/appointment/Appointment';
 
 function App() {
   const isAuthed = true;
@@ -26,6 +27,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/doctors">
               <Route path="/doctors/:docId" element={<DoctorDetail />} />
+              <Route path="/doctors/:docId/reservation" element={<Appointment />} />
               <Route exact path="/doctors" element={<Home />} />
             </Route>
           </Route>
