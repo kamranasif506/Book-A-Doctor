@@ -4,12 +4,14 @@ import { combineReducers } from 'redux';
 import navSlice from './navbar/navSlice';
 // eslint-disable-next-line import/extensions
 // import appointmentSlice from './appointment/appointmentSlice';
+import authReducer from './auth/authSlice';
 // import testSlice from './first/testSlice';
 // import authSlice from './auth/authSlice';
 // import doctorSlice from './doctor/doctorSlice';
 
 const rootReducer = combineReducers({
   navbar: navSlice.reducer,
+  auth: authReducer,
   // tests: testSlice.reducer,
   // auth: authSlice.reducer,
   // doctors: doctorSlice.reducer,

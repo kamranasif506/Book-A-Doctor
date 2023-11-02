@@ -17,7 +17,7 @@ import Appointment from './components/appointment/Appointment';
 
 function App() {
   const isAuthed = true;
-
+  // const isAuthed = useSelector((state) => state.auth.token !== null);
   return (
     <Provider store={store}>
       <Router>
@@ -26,8 +26,11 @@ function App() {
           <Route exact path="/" element={<PrivateRoute />}>
             <Route path="/" element={<Home />} />
             <Route path="/doctors">
-              <Route path="/doctors/:docId" element={<DoctorDetail />} />
               <Route path="/doctors/:docId/reservation" element={<Appointment />} />
+              <Route
+                path="/doctors/:docId"
+                element={<DoctorDetail />}
+              />
               <Route exact path="/doctors" element={<Home />} />
             </Route>
           </Route>
