@@ -16,7 +16,7 @@ import DoctorDetail from './components/doctorDetail';
 
 function App() {
   const isAuthed = true;
-
+  // const isAuthed = useSelector((state) => state.auth.token !== null);
   return (
     <Provider store={store}>
       <Router>

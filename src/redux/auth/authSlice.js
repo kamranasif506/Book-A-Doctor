@@ -9,21 +9,25 @@ const initialState = {
   isLoading: false,
   error: null,
 };
+const headers = {
+  'Content-Type': 'application/json',
+};
 
 const loginURl = `${config.apiBaseUrl}${config.loginEndpoint}`;
 export const LoginAuth = createAsyncThunk(
   'auth/login',
   async (data, thunkAPI) => {
     try {
-      const response = await axios.post(loginURl, data);
-      console.log(response);
-      const { user } = response.data;
+    //   console.log(data);
+      const response = await axios.post(loginURl, data, { headers });
+      const user = response.data;
       const token = response.headers.authorization;
       localStorage.setItem('token', token);
-
-      return { user, token };
+      const res = { user, token };
+      return res;
     } catch (error) {
-      throw thunkAPI.rejectWithValue(error);
+      const errorMessage = error.response?.data || 'An error occurred';
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   },
 );
@@ -40,14 +44,14 @@ const authSlice = createSlice({
       })
       .addCase(LoginAuth.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload.data;
+        state.user = action.payload.user.data;
         state.token = action.payload.token;
-        state.status = action.payload.status.message;
+        state.status = action.payload.user.status.message;
       })
       .addCase(LoginAuth.rejected, (state, action) => {
         state.isLoading = false;
-        state.status = 'failed';
-        state.error = action.error.message;
+        state.error = 'failed';
+        state.status = action.error.message;
       });
   },
 });
