@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;800;1000&family=Open+Sans:ital,wght@0,300;1,300&family=Roboto+Slab:wght@300;400;500&display=swap');
+
 /*
 ===============
 Appointment
@@ -24,8 +25,8 @@ Body
   background-image: url(https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
 }
 
- .transparent {
-  background-color:rgb(150, 191, 16, 0.76);
+.transparent {
+  background-color: rgb(150, 191, 16, 0.76);
   position: relative;
   z-index: 2;
   width: 100%;
@@ -55,7 +56,7 @@ Body
   color: aliceblue;
   font-size: 2rem;
   text-align: center;
-  font-family: montserrat;
+  font-family: 'Montserrat', sans-serif;
   width: 100%;
   padding: 0 3rem;
 }
@@ -65,7 +66,7 @@ Body
   border: 0.7px solid #c8f799;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  color: #c8f799
+  color: #c8f799;
 }
 
 .apointment-paragraph {
@@ -74,7 +75,7 @@ Body
   margin-bottom: 2rem;
   color: #c8f799;
   padding: 0 3rem;
-  font-family: montserrat;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .button-holder {
@@ -123,7 +124,6 @@ Body
   margin-top: 2rem;
 }
 
-
 @media (width <= 1000px) {
   .appointment-container {
     width: 100%;
@@ -139,7 +139,7 @@ Body
     margin-top: 3rem;
     font-size: 1.5rem;
     text-align: center;
-    font-family: montserrat;
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
@@ -147,7 +147,6 @@ Body
   .appointment-form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
     justify-content: space-between;
