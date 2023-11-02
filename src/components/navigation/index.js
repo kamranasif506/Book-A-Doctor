@@ -70,6 +70,7 @@ const Navigation = () => {
           onKeyDown={(event) => keyPressHandler(event)}
           role="button"
           tabIndex={0}
+          aria-label="Toggle Menu"
         />
         {links.map((link) => (
           <li
