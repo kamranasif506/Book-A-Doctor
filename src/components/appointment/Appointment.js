@@ -67,6 +67,7 @@ export default function Appointment() {
                   className="btn date"
                   type="button"
                 >
+                  Click
                   <DatePicker
                     className="date-pik"
                     style={{
@@ -83,6 +84,7 @@ export default function Appointment() {
                   className="btn time"
                   type="button"
                 >
+                  Click
                   <TimePicker
                     className="time-pik"
                     date={date}
