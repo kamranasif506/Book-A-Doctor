@@ -2,6 +2,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 
 import navSlice from './navbar/navSlice';
+// eslint-disable-next-line import/extensions
+// import appointmentSlice from './appointment/appointmentSlice';
 import authReducer from './auth/authSlice';
 // import testSlice from './first/testSlice';
 // import authSlice from './auth/authSlice';
@@ -13,6 +15,7 @@ const rootReducer = combineReducers({
   // tests: testSlice.reducer,
   // auth: authSlice.reducer,
   // doctors: doctorSlice.reducer,
+  // appointment: appointmentSlice.reducer,
 });
 
 const store = configureStore({
