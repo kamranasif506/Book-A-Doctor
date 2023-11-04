@@ -1,29 +1,49 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import './appointment.css';
-import { DatePicker, TimePicker } from '@mui/x-date-pickers';
+import { useParams } from 'react-router-dom';
+// import { TimePicker, DatePicker } from '@mui/x-date-pickers';
+import TimePicker from 'react-time-picker';
+import DatePicker from 'react-datepicker';
+import { postData } from '../../redux/appointments/appointmentSlice';
 
 export default function Appointment() {
+  const { docId } = useParams();
+  console.log(docId);
   const dispatch = useDispatch();
+  const [city, setCity] = useState('Select City');
   const [time, setTime] = useState('10:00');
-  const [date, setDate] = useState(null);
+  const [date, setDate] = useState('10:00');
   const [pending, setPending] = useState('Add Book');
-  function catagoryHandler(e) {
-    setTime(e.target.value);
-    setDate(e.target.value);
-  }
+  // function catagoryHandler(e) {
+  //   console.log(e.$d);
+  //   // const formattedDate = e.toLocaleDateString(e);
+  //   // console.log(formattedDate);
+  //   setCity(e);
+  //   setTime(e);
+  //   setDate(e.d);
+  // }
+  // const reservation = {
+  //   city,
+  //   time,
+  //   date,
+  // };
+  // console.log(reservation);
 
   function postDispatcher() {
-    const bookDetail = {
+    const reservation = {
+      city,
+      time,
+      date,
     };
-    console.log(bookDetail);
-    setPending('...Adding');
-    // dispatch(postData(bookDetail));
-    setTimeout(() => {
-      dispatch();
-      // dispatch(getBooks());
-      setPending('Add Book');
-    }, 1000);
+    console.log(reservation);
+    setPending('...Reserving');
+    dispatch(postData(docId, reservation));
+    // setTimeout(() => {
+    //   dispatch();
+    //   // dispatch(getBooks());
+    //   setPending('Add Book');
+    // }, 1000);
   }
   return (
     <div className="appointment-container">
@@ -51,10 +71,9 @@ export default function Appointment() {
                   type="button"
                 >
                   <select
-                    value={date}
-                    d={date}
+                    value={city}
                     onChange={(e) => {
-                      catagoryHandler(e);
+                      setCity(e.target.value);
                     }}
                   >
                     <option value="London">London</option>
@@ -70,14 +89,11 @@ export default function Appointment() {
                   Click
                   <DatePicker
                     className="date-pik"
-                    style={{
-                      color: 'red',
-                      width: '10rem',
+                    dateFormat="dd/MM/yyyy"
+                    onChange={(date) => {
+                      console.log(date);
+                      setDate(date);
                     }}
-                    selected={date}
-                    date={date}
-                    value={date}
-                    onChange={setDate}
                   />
                 </button>
                 <button
@@ -87,9 +103,11 @@ export default function Appointment() {
                   Click
                   <TimePicker
                     className="time-pik"
-                    date={date}
                     value={time}
-                    onChange={setTime}
+                    onChange={(e) => {
+                      console.log(e);
+                      setTime(e);
+                    }}
                   />
                 </button>
               </form>

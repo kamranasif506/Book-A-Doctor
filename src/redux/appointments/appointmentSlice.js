@@ -1,19 +1,24 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const dataUrl = 'http://localhost:3000/messages';
+// const dataUrl = 'http://localhost:4000/api/v1/doctors/:doctor_id/appointments';
 
-export const getAppointment = createAsyncThunk('reservation/getReservation', () => axios.get(dataUrl)
+export const getAppointment = createAsyncThunk('reservation/getReservation', async (doctorId) => axios.get(`http://localhost:4000/api/v1/doctors/${doctorId}/appointments`)
   .then((res) => res.data)
   .catch((err) => console.log(err)));
 
-export const postData = createAsyncThunk('reservation/postData', async (bookDetail) => axios.post(dataUrl, {
-  item_id: bookDetail.item_id,
-  title: bookDetail.title,
-  author: 'suzan collins',
-  category: bookDetail.category,
+const token = localStorage.getItem('token');
+console.log('tpleomg');
+console.log(token);
+
+export const postData = createAsyncThunk('reservation/postData', async (docId, appointment) => axios.post(`http://localhost:4000/api/v1/doctors/${docId}/appointments`, {
+  date: appointment.date,
+  city: appointment.city,
+  time: appointment.time,
   headers: {
     'Content-type': 'application/json',
+    // eslint-disable-next-line quote-props
+    'Authorization': token,
   },
 }).then((response) => response.data).catch((err) => console.log(err)));
 

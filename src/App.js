@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/" element={<PrivateRoute />}>
             <Route path="/" element={<Home />} />
             <Route path="/doctors">
-              <Route path="/doctors/:docId/reservation" element={<Appointment />} />
+              <Route exact path="/doctors/:docId/reservation" element={<Appointment />} />
               <Route
                 path="/doctors/:docId"
                 element={<DoctorDetail />}
