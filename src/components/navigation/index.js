@@ -84,7 +84,7 @@ const Navigation = () => {
         <div className="line" />
       </div>
 
-      <h1>BookDoc</h1>
+      <h1 id="title">BookDoc</h1>
 
       <ul className={isOpen ? 'open' : ''}>
         <TbX
