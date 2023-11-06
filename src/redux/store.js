@@ -6,6 +6,7 @@ import navSlice from './navbar/navSlice';
 import appointmentReducer from './appointments/appointmentSlice';
 import doctorReducer from './doctors/doctorSlice';
 import authReducer from './auth/authSlice';
+import reservationReducer from './reservations/reservationSlice';
 // import testSlice from './first/testSlice';
 // import authSlice from './auth/authSlice';
 // import doctorSlice from './doctor/doctorSlice';
@@ -13,6 +14,7 @@ import authReducer from './auth/authSlice';
 const rootReducer = combineReducers({
   navbar: navSlice.reducer,
   auth: authReducer,
+  reservation: reservationReducer,
   // tests: testSlice.reducer,
   // auth: authSlice.reducer,
   // doctors: doctorSlice.reducer,

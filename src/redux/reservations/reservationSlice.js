@@ -7,18 +7,16 @@ const initialState = {
   status: 'Rejected',
   isLoading: false,
 };
-const headers = {
-  'Content-Type': 'application/json',
-  Authorization: localStorage.getItem('token'),
-};
 
-const reservationListURl = `${config.apiBaseUrl}${config.loginEndpoint}`;
+const reservationListURl = `${config.apiBaseUrl}${config.reservationListEndpoint}`;
 export const reservationsList = createAsyncThunk(
   'reservations/fetch',
-  async (thunkAPI) => {
+  async (headers, thunkAPI) => {
     try {
     //   console.log(data);
-      const response = await axios.get(reservationListURl, { headers });
+      const response = await axios.get(reservationListURl, {
+        headers: { ...headers },
+      });
 
       return response;
     } catch (error) {
@@ -39,14 +37,13 @@ const reservationSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(reservationsList.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.isLoading = false;
-        state.user = action.payload.user.data;
-        state.token = action.payload.token;
-        state.status = action.payload.user.status.message;
+        state.reservationList = action.payload.data;
+        state.status = 'success';
       })
       .addCase(reservationsList.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = 'failed';
         state.status = action.error.message;
       });
   },

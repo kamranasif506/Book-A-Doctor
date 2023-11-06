@@ -3,7 +3,7 @@ const config = {
   loginEndpoint: 'login',
   signupEndpoint: 'signup',
   logoutEndpoint: 'logout',
-  reservationListEndpoint: 'api/vi/',
+  reservationListEndpoint: 'api/v1/appointments',
   // Add more URLs as needed
 };
 
