@@ -22,6 +22,7 @@ const ReservationList = () => {
     },
     // Add more columns as needed
   ];
+  console.log(localStorage.getItem('token'));
 
   const data = [
     { id: 1, customerName: 'Hassan', date: '2023-10-31' },
