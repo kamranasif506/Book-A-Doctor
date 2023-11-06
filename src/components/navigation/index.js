@@ -25,7 +25,7 @@ const links = [
   },
   {
     name: 'Add doctor',
-    path: '/doctors/new',
+    path: '/addDoctor',
   },
   {
     name: 'Delete doctor',

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Provider } from 'react-redux';
+import React, { useEffect } from 'react';
+import { Provider, useDispatch } from 'react-redux';
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,8 +15,15 @@ import Register from './components/auth/register';
 import DoctorDetail from './components/doctorDetail';
 import ReservationList from './components/reservations';
 import Appointment from './components/appointment/Appointment';
+import NavAppointment from './components/appointment/NavAppointment';
+import { getDoctors } from './redux/doctors/doctorSlice';
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    console.log('fetching.........');
+    dispatch(getDoctors());
+  }, []);
   const isAuthed = true;
   // const isAuthed = useSelector((state) => state.auth.token !== null);
   return (
@@ -26,8 +33,9 @@ function App() {
         <Routes>
           <Route exact path="/" element={<PrivateRoute />}>
             <Route path="/" element={<Home />} />
+            <Route path="/reserve" element={<NavAppointment />} />
             <Route path="/doctors">
-              <Route path="/doctors/:docId/reservation" element={<Appointment />} />
+              <Route exact path="/doctors/:docId/reservation" element={<Appointment />} />
               <Route
                 path="/doctors/:docId"
                 element={<DoctorDetail />}
