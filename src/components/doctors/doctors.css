@@ -30,7 +30,7 @@
   height: 4rem;
   background-color: #97bf10;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(29, 68, 2, 0.5);
+  box-shadow: 0 0 10px rgb(29 68 2 / 50%);
 }
 
 .arrow:hover {
@@ -57,7 +57,7 @@
   color: #fff;
 }
 
-@media (max-width: 800px) {
+@media (width <= 800px) {
   #docs-div {
     padding: 1rem;
   }
@@ -68,7 +68,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .arrow {
     width: 3rem;
     height: 3rem;

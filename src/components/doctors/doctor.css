@@ -41,7 +41,7 @@
   padding: 0 7%;
 }
 
-@media (max-width: 800px) {
+@media (width <= 800px) {
   #doctors {
     gap: 2%;
     padding: 1rem;

@@ -1,35 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './appointment.css';
 import { useParams } from 'react-router-dom';
 import { TimePicker, DatePicker } from '@mui/x-date-pickers';
 import { postData } from '../../redux/appointments/appointmentSlice';
-import { getDoctors } from '../../redux/doctors/doctorSlice';
 
-export default function Appointment() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    console.log('fetching.........');
-    dispatch(getDoctors());
-  }, []);
+export default function NavAppointment() {
+  const { doctor } = useSelector((store) => store.doctor);
+  const datePickerSx = {
+    '& .MuiOutlinedInput-notchedOutline': {
+      border: 'none',
+      input: '#ffff',
+      color: 'grey',
+    },
+  };
   const { appointment } = useSelector((store) => store);
   console.log(appointment);
   const { docId } = useParams();
-  console.log(docId);
+  const dispatch = useDispatch();
   const [location, setLocation] = useState('Select Location');
   const [time, setTime] = useState('10:00');
   const [date, setDate] = useState('10:00');
   const [pending, setPending] = useState('Add Book');
-
-  const reservation = {
-    location,
-    time,
-    date,
-    docId,
-  };
-
-  console.log(reservation);
-
   function postDispatcher() {
     const reservation = {
       location,
@@ -74,18 +66,36 @@ export default function Appointment() {
                       setLocation(e.target.value);
                     }}
                   >
+                    {doctor.map((option) => (
+                      <option key={option.value} value={option.doctor_name}>
+                        {option.doctor_name}
+                      </option>
+                    ))}
+                  </select>
+                </button>
+                <button
+                  className="btn city"
+                  type="button"
+                >
+                  <select
+                    value={location}
+                    onChange={(e) => {
+                      setLocation(e.target.value);
+                    }}
+                  >
                     <option value="London">London</option>
                     <option value="Paris">Paris</option>
                     <option value="Zuric">Zuric</option>
                     <option value="Washington-Dc">Washington-Dc</option>
                   </select>
                 </button>
-                {/* eslint-disable-next-line */}
                 <button
                   className="btn date"
                   type="button"
                 >
+                  {/* eslint-disable-next-line */}
                   <DatePicker
+                    sx={datePickerSx}
                     onChange={(e) => {
                       const d = new Date(e).toLocaleDateString('fr-FR');
                       setDate(d);
@@ -98,13 +108,13 @@ export default function Appointment() {
                 >
                   {/* eslint-disable-next-line */}
                   <TimePicker
+                    sx={datePickerSx}
                     className="time-pik"
                     value={time}
                     onChange={(e) => {
                       const t = new Date(e).toLocaleTimeString('en-US', { hour12: false });
                       setTime(t);
                     }}
-                    format="HH12:MI:SS AM"
                   />
                 </button>
               </form>
