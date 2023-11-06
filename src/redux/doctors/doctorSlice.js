@@ -2,12 +2,18 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // const dataUrl = 'http://localhost:4000/api/v1/doctors/:doctor_id/appointments';
-
-export const getAppointment = createAsyncThunk('reservation/getReservation', async (doctorId) => axios.get(`http://localhost:4000/api/v1/doctors/${doctorId}/appointments`)
-  .then((res) => res.data)
-  .catch((err) => console.log(err)));
-
 const token = localStorage.getItem('token');
+
+const urlappoint = 'http://localhost:4000/api/v1/doctors';
+const headers = {
+  Authorization: localStorage.getItem('token'),
+};
+
+// Create an async thunk to fetch appointments
+export const getDoctors = createAsyncThunk('appointments/fetch', async () => {
+  const response = await axios.get(urlappoint, { headers });
+  return response.data;
+});
 
 export const postData = createAsyncThunk('reservation/postData', async (appointment) => axios.post(`http://localhost:4000/api/v1/doctors/${appointment.docId}/appointments`, appointment, {
   headers: {
@@ -29,12 +35,12 @@ export const deleteData = createAsyncThunk('appointment/deleteData', async (item
 }).then((response) => response).catch((err) => console.log(err)));
 
 const initialState = {
-  reservation: [],
+  doctor: [],
   isLoading: true,
 };
 
-const appointmentSlice = createSlice({
-  name: 'appointment',
+const doctorSlice = createSlice({
+  name: 'doctor',
   initialState,
   reducers: {
     // addAppointment: (state, action) => {
@@ -46,27 +52,17 @@ const appointmentSlice = createSlice({
     // },
   },
   extraReducers: {
-    [getAppointment.pending]: (state) => {
+    [getDoctors.pending]: (state) => {
       state.isLoading = true;
     },
-    [getAppointment.fulfilled]: (state, action) => {
+    [getDoctors.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.books = action.payload;
+      state.doctor = action.payload;
     },
-    [getAppointment.rejected]: (state) => {
-      state.isLoading = false;
-    },
-    [postData.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [postData.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.books = action.payload;
-    },
-    [postData.rejected]: (state) => {
+    [getDoctors.rejected]: (state) => {
       state.isLoading = false;
     },
   },
 });
-export const { addAppointment, removeAppointment } = appointmentSlice.actions;
-export default appointmentSlice.reducer;
+export const { addAppointment, removeAppointment } = doctorSlice.actions;
+export default doctorSlice.reducer;
