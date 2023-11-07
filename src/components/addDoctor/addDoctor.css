@@ -10,6 +10,7 @@
 
 .add-doctor h1 {
 	color: #97bf10;
+  font-weight: bold;
 }
 
 .doc-input-div {
