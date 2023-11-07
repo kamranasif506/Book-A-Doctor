@@ -1,6 +1,6 @@
-@media only screen and (width <=1000px) {
+@media only screen and (width <= 1000px) {
 	 .add-doctor {
-				width: 100%;
+				  width: 100%;
 				display: flex;
 				justify-content: center;
 				flex-direction: column;
@@ -93,7 +93,7 @@
 		}
 }
 
-@media only screen and (width >=1000px) {
+@media only screen and (width >= 1000px) {
 		.add-doctor {
 				width: 110%;
 				display: flex;
