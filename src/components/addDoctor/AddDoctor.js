@@ -59,6 +59,7 @@ export default function AddDoctor() {
                 }}
                 required
               >
+                <option value="">Select a Specialization</option>
                 {specialization.map((option) => (
                   <option key={option.value} value={option.id}>
                     {option.name}

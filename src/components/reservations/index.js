@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { reservationsList } from '../../redux/reservations/reservationSlice';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './reservationList.css';
+import DoctorPictureCell from './doctorPicture';
 
 const ReservationList = () => {
   const { reservationList, isLoading, status } = useSelector((store) => store.reservation);
@@ -14,33 +15,66 @@ const ReservationList = () => {
     'Content-Type': 'application/json',
     Authorization: localStorage.getItem('token'),
   };
-  useEffect(() => {
+
+  const fetchData = () => {
     dispatch(reservationsList(headers));
-  }, [dispatch]);
+  };
+
+  useEffect(() => {
+    // if (reservationList.length <= 0) {
+    fetchData();
+    // }
+  }, []);
+
+  const customStyles = {
+    headCells: {
+      style: {
+        fontSize: '1.2rem', // Adjust the font size as needed
+      },
+    },
+    cells: {
+      style: {
+        fontSize: '1.5rem', // Adjust the font size as needed
+      },
+    },
+  };
 
   const columns = [
     {
-      name: 'ID',
-      selector: 'id',
+      name: 'Picture',
+      selector: (row) => row.profile_picture,
+      sortable: false,
+      cell: (row) => <DoctorPictureCell value={row.profile_picture} />,
+    },
+    {
+      name: 'Doctor Name',
+      selector: (row) => row.doctor_name,
       sortable: true,
     },
     {
-      name: 'Customer Name',
-      selector: 'customerName',
+      name: 'Appointment Date',
+      selector: (row) => row.appointment_date,
       sortable: true,
     },
     {
-      name: 'Date',
-      selector: 'date',
+      name: 'Location',
+      selector: (row) => row.location,
       sortable: true,
     },
     // Add more columns as needed
   ];
+  const result = reservationList.map((appointment) => ({
+    profile_picture: appointment.doctor.profile_picture,
+    doctor_name: appointment.doctor.doctor_name,
+    appointment_date: appointment.date,
+    location: appointment.location,
+  }));
+  console.log(result);
   let content;
   if (isLoading) {
     content = <p>Loading...</p>;
   } else if (status === 'success') {
-    content = <DataTable title="Reservation List" columns={columns} data={reservationList} />;
+    content = <DataTable columns={columns} data={result} customStyles={customStyles} className="table table-bordered table-striped" />;
   } else {
     content = (
       <p>
