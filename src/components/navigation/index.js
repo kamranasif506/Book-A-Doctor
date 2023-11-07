@@ -58,10 +58,14 @@ const Navigation = () => {
       Authorization: localStorage.getItem('token'),
     };
     dispatch(logOutAuth(logoutHeaders))
-      .then(() => {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          navigate('/login');
+      .then((response) => {
+        if (response.status === 401) {
+          console.log('sda');
+        } else {
+          const token = localStorage.getItem('token');
+          if (!token) {
+            navigate('/login');
+          }
         }
       })
       .catch((error) => {

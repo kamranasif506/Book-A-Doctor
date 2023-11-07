@@ -62,6 +62,7 @@ export const logOutAuth = createAsyncThunk(
       localStorage.setItem('token', '');
       return response;
     } catch (error) {
+      localStorage.setItem('token', '');
       const errorMessage = error.response?.data || 'An error occurred';
       return thunkAPI.rejectWithValue(errorMessage);
     }
@@ -115,6 +116,7 @@ const authSlice = createSlice({
         state.user = [];
       })
       .addCase(logOutAuth.rejected, (state, action) => {
+        console.log('logged out');
         state.isLoading = false;
         state.error = 'failed';
         state.status = action.error.message;
