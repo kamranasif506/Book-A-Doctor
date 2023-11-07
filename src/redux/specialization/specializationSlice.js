@@ -1,14 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-// const dataUrl = 'http://localhost:4000/api/v1/doctors/:doctor_id/appointments';
+
 const token = localStorage.getItem('token');
-const urlappoint = 'http://localhost:4000/api/v1/doctors';
+const urlappoint = 'http://localhost:4000/api/v1/specializations';
 const headers = {
   Authorization: localStorage.getItem('token'),
 };
 // Create an async thunk to fetch appointments
-export const getDoctors = createAsyncThunk('appointments/fetch', async () => {
+export const getSpecialization = createAsyncThunk('appointments/fetch', async () => {
   const response = await axios.get(urlappoint, { headers });
+  console.log(response.data);
   return response.data;
 });
 export const postData = createAsyncThunk('doctor/postData', async (doctor) => axios.post('http://localhost:4000/api/v1/doctors', doctor, {
@@ -29,11 +30,11 @@ export const deleteData = createAsyncThunk('appointment/deleteData', async (item
   },
 }).then((response) => response).catch((err) => console.log(err)));
 const initialState = {
-  doctor: [],
+  specialization: [],
   isLoading: true,
 };
-const doctorSlice = createSlice({
-  name: 'doctor',
+const specializationSlice = createSlice({
+  name: 'specialization',
   initialState,
   reducers: {
     // addAppointment: (state, action) => {
@@ -45,17 +46,17 @@ const doctorSlice = createSlice({
     // },
   },
   extraReducers: {
-    [getDoctors.pending]: (state) => {
+    [getSpecialization.pending]: (state) => {
       state.isLoading = true;
     },
-    [getDoctors.fulfilled]: (state, action) => {
+    [getSpecialization.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.doctor = action.payload;
+      state.specialization = action.payload;
     },
-    [getDoctors.rejected]: (state) => {
+    [getSpecialization.rejected]: (state) => {
       state.isLoading = false;
     },
   },
 });
-export const { addAppointment, removeAppointment } = doctorSlice.actions;
-export default doctorSlice.reducer;
+export const { addAppointment, removeAppointment } = specializationSlice.actions;
+export default specializationSlice.reducer;

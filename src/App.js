@@ -17,12 +17,15 @@ import ReservationList from './components/reservations';
 import Appointment from './components/appointment/Appointment';
 import NavAppointment from './components/appointment/NavAppointment';
 import { getDoctors } from './redux/doctors/doctorSlice';
+import AddDoctor from './components/addDoctor/AddDoctor';
+import { getSpecialization } from './redux/specialization/specializationSlice';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     console.log('fetching.........');
     dispatch(getDoctors());
+    dispatch(getSpecialization());
   }, []);
   const isAuthed = true;
   // const isAuthed = useSelector((state) => state.auth.token !== null);
@@ -47,10 +50,10 @@ function App() {
 
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/addDoctor" element={<AddDoctor />} />
         </Routes>
       </Router>
     </Provider>
   );
 }
-
 export default App;
