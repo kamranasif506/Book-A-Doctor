@@ -1,11 +1,11 @@
 @media only screen and (width <=1000px) {
   .add-doctor {
-     width: 100%;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	align-items: center;
-	gap: 1rem;
+    width: 100%;
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+     align-items: center;
+     gap: 1rem;
 }
 
 .add-doctor h1 {
