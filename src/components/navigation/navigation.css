@@ -17,6 +17,13 @@ nav {
   box-shadow: 0 0 10px rgb(1 1 1 / 40%);
 }
 
+#title {
+  text-align: center;
+  font-family: 'Brush Script MT', cursive;
+  font-size: 3rem;
+  color: #97bf10;
+}
+
 nav h1 {
   font-size: 1.5rem;
   margin: 0;
