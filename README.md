@@ -109,18 +109,18 @@ Collaborators.
 - LinkedIn: [aklilu-mekonnen](https://www.linkedin.com/in/aklilu-mekonnen/)
 
 👤 **Addisalem Seifu**
-- GitHub: [@addisalemseifu](https://github.com/githubhandle)
-- Twitter: [@Addisalem Seifu](https://twitter.com/addisalems92518)
+- GitHub: [@addisalemseifu](https://github.com/addisalemseifu)
+- Twitter: [@Addisalem Seifu](https://twitter.com/beidework)
 - LinkedIn: [addisalem seifu](https://www.linkedin.com/in/addisalemseifu/)
 
 👤 **Kamran Asif**
 - GitHub: [](https://github.com/kamranasif506)
-- Twitter: [@HassShakur](https://twitter.com/HassShakur)
-- LinkedIn: [hassanShakur](https://linkedin.com/in/hassanShakur)
+- LinkedIn: [](https://www.linkedin.com/in/kamran-asif)
 
 👤 **Hassan Shakur**
-- GitHub: [](https://github.com/)
-- LinkedIn: [](https://www.linkedin.com/in/)
+- GitHub: [@hassanShakur](https://github.com/hassanShakur)
+- Twitter: [@HassShakur](https://twitter.com/HassShakur)
+- LinkedIn: [hassanShakur](https://linkedin.com/in/hassanShakur)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
