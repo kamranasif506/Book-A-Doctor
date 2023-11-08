@@ -29,7 +29,7 @@ const links = [
   },
   {
     name: 'Delete doctor',
-    path: '/',
+    path: '/delete',
   },
   {
     name: 'Logout',
