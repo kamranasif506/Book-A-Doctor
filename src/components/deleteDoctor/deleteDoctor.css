@@ -64,8 +64,9 @@
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 0.5rem;
-    background-color: #ff0000;
+    background-color: #f00;
     color: #fff;
+
     /* font-size: 1.5rem; */
     font-weight: 400;
     cursor: pointer;
@@ -84,19 +85,19 @@
   }
   
   .delete-doctor-item-delete button:disabled {
-    background-color: #ffcccc;
+    background-color: #fcc;
     cursor: not-allowed;
   }
   
   .delete-doctor-item-delete button:disabled:hover {
-    background-color: #ffcccc;
+    background-color: #fcc;
   }
   
   .delete-doctor-item-delete button:disabled:active {
-    background-color: #ffcccc;
+    background-color: #fcc;
   }
   
-  @media screen and (max-width: 768px) {
+  @media screen and (width <= 768px) {
     .delete-doctor {
       padding: 2rem 1rem;
     }
@@ -128,6 +129,7 @@
   }
   
   /* Path src/components/deleteDoctor/deleteDoctor.js */
+
   /* <section className='delete-doctor'>
         <h3>Delete Doctors</h3>
   
