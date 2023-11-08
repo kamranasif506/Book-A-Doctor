@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
 import './addDoctor.css';
 import { getDoctors, postData } from '../../redux/doctors/doctorSlice';
@@ -7,28 +8,58 @@ import { getDoctors, postData } from '../../redux/doctors/doctorSlice';
 export default function AddDoctor() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [city, setLocation] = useState('Select Location');
-  const [doctorName, setName] = useState('Name');
-  const [specializationId, setSpecialization] = useState('Specialization');
-  const [profilePicture, setPicture] = useState('Image');
-  const [docBio, setBio] = useState('Doctor bio');
+  const [city, setLocation] = useState(null);
+  const [doctorName, setName] = useState(null);
+  const [specializationId, setSpecialization] = useState(null);
+  const [profilePicture, setPicture] = useState(null);
+  const [docBio, setBio] = useState(null);
   const [pending, setPending] = useState('Add New Doctor');
   const { specializations } = useSelector((store) => store.specialization);
-  const doctor = {
-    location: city,
-    doctor_name: doctorName,
-    specialization_id: specializationId,
-    profile_picture: profilePicture,
-    bio: docBio,
-  };
+
   function postDispatcher() {
-    setPending('...Adding Doctor');
-    setTimeout(() => {
-      dispatch(postData(doctor));
-      setPending('Add Book');
-      dispatch(getDoctors());
-      navigate('/doctors');
-    }, 1000);
+    const doctor = {
+      location: city,
+      doctor_name: doctorName,
+      specialization_id: specializationId,
+      profile_picture: profilePicture,
+      bio: docBio,
+    };
+    let valid = true;
+    if (doctor.location === null) {
+      swal('No Empty values allowed!');
+      valid = false;
+      navigate('/addDoctor');
+    }
+    if (doctor.bio === null) {
+      swal('No Empty values allowed!');
+      valid = false;
+      navigate('/addDoctor');
+    }
+    if (doctor.doctor_name === null) {
+      swal('No Empty values allowed!');
+      valid = false;
+      navigate('/addDoctor');
+    }
+    if (doctor.profile_picture === null) {
+      swal('No Empty values allowed!');
+      valid = false;
+      navigate('/addDoctor');
+    }
+    if (doctor.location === null) {
+      swal('No Empty values allowed!');
+      valid = false;
+      navigate('/addDoctor');
+    }
+    if (valid) {
+      setPending('...Adding Doctor');
+      setTimeout(() => {
+        dispatch(postData(doctor));
+        setPending('Add Book');
+        dispatch(getDoctors());
+        swal('Doctor Added Seccessfully!');
+        navigate('/doctors');
+      }, 1000);
+    }
   }
   return (
     <main className="add-doctor">

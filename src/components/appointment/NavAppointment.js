@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import swal from 'sweetalert';
 import './appointment.css';
 import { useNavigate } from 'react-router-dom';
 import { TimePicker, DatePicker } from '@mui/x-date-pickers';
@@ -10,10 +11,10 @@ export default function NavAppointment() {
   const { doctor } = useSelector((store) => store.doctor);
   const { isLoading } = useSelector((store) => store.doctor);
   const dispatch = useDispatch();
-  const [docId, setDocId] = useState('Select Doctor');
-  const [location, setLocation] = useState('Select Location');
-  const [time, setTime] = useState('10:00');
-  const [date, setDate] = useState('10:00');
+  const [docId, setDocId] = useState(null);
+  const [location, setLocation] = useState(null);
+  const [time, setTime] = useState(null);
+  const [date, setDate] = useState(null);
   const [pending, setPending] = useState('Add Book');
 
   const datePickerSx = {
@@ -31,12 +32,36 @@ export default function NavAppointment() {
       date,
       docId,
     };
-    setPending('...Reserving');
-    setTimeout(() => {
-      dispatch(postData(reservation));
-      setPending('Add Book');
-      navigate('/reservations');
-    }, 1000);
+    let valid = true;
+    if (reservation.location === null) {
+      swal('No Empty values allowed!');
+      valid = false;
+      navigate('/reserve');
+    }
+    if (reservation.time === null) {
+      swal('No Empty values allowed!');
+      valid = false;
+      navigate('/reserve');
+    }
+    if (reservation.date === null) {
+      swal('No Empty values allowed!');
+      valid = false;
+      navigate('/reserve');
+    }
+    if (reservation.docId === null) {
+      swal('No Empty values allowed!');
+      valid = false;
+      navigate('/reserve');
+    }
+    if (valid) {
+      setPending('...Reserving');
+      setTimeout(() => {
+        dispatch(postData(reservation));
+        setPending('Add Book');
+        swal('Appointment Reserved Seccessfully!');
+        navigate('/reservations');
+      }, 1000);
+    }
   }
   if (isLoading) {
     return (

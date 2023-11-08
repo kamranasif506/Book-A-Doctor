@@ -108,6 +108,10 @@ Body
   height: 2.5rem;
 }
 
+.btn:hover {
+  background-color: #97bf10;
+}
+
 .city select {
   width: 100%;
   border: none;
