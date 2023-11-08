@@ -14,15 +14,6 @@ export default function Appointment() {
   const [date, setDate] = useState(new Date(Date.now()));
   const [pending, setPending] = useState('Add Book');
 
-  const reservation = {
-    location,
-    time,
-    date,
-    doctor_id: docId,
-  };
-
-  console.log(reservation);
-
   function postDispatcher() {
     const reservation = {
       location,

@@ -75,7 +75,6 @@ export default function NavAppointment() {
                       value={docId}
                       onChange={(e) => {
                         setDocId(e.target.value);
-                        console.log(e.target.value);
                       }}
                       required
                     >

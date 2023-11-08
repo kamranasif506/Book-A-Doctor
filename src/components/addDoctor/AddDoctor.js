@@ -57,7 +57,6 @@ export default function AddDoctor() {
                 value={specializationId}
                 onChange={(e) => {
                   setSpecialization(e.target.value);
-                  console.log(e.target.value);
                 }}
                 required
               >
