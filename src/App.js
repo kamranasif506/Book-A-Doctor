@@ -17,6 +17,7 @@ import Appointment from './components/appointment/Appointment';
 import NavAppointment from './components/appointment/NavAppointment';
 import { getDoctors } from './redux/doctors/doctorSlice';
 import AddDoctor from './components/addDoctor/AddDoctor';
+import DeleteDoctorPage from './components/deleteDoctor';
 // import { getSpecialization } from './redux/specialization/specializationSlice';
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/addDoctor" element={<AddDoctor />} />
+          <Route path="/delete" element={<DeleteDoctorPage />} />
         </Routes>
       </Router>
     );

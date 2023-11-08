@@ -12,6 +12,7 @@ export const getDoctors = createAsyncThunk('appointments/fetch', async () => {
   console.log(`doctors...${response.data}`);
   return response.data;
 });
+
 export const postData = createAsyncThunk('doctor/postData', async (doctor) => axios.post('http://localhost:4000/api/v1/doctors', doctor, {
   headers: {
     'Content-type': 'application/json',
@@ -20,6 +21,15 @@ export const postData = createAsyncThunk('doctor/postData', async (doctor) => ax
   },
   body: JSON.stringify(doctor),
 }).then((response) => response.data).catch((err) => console.log(err)));
+
+export const deleteDoctor = createAsyncThunk('doctor/deleteDoctor', async (doctorId) => axios.delete(`http://localhost:4000/api/v1/doctors/${doctorId}`, {
+  headers: {
+    'Content-type': 'application/json',
+    Authorization: token,
+  },
+})
+  .then((response) => response)
+  .catch((err) => console.log(err)));
 
 const initialState = {
   doctor: [],
