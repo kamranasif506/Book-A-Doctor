@@ -17,12 +17,12 @@ import Appointment from './components/appointment/Appointment';
 import NavAppointment from './components/appointment/NavAppointment';
 import { getDoctors } from './redux/doctors/doctorSlice';
 import AddDoctor from './components/addDoctor/AddDoctor';
+import DeleteDoctorPage from './components/deleteDoctor';
 import { getSpecialization } from './redux/specialization/specializationSlice';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log('fetching.........');
     dispatch(getDoctors());
     dispatch(getSpecialization());
   }, []);
@@ -42,6 +42,8 @@ function App() {
                 path="/doctors/:docId"
                 element={<DoctorDetail />}
               />
+              <Route path="/doctors/delete" element={<DeleteDoctorPage />} />
+              <Route path="/doctors/add" element={<AddDoctor />} />
               <Route exact path="/doctors" element={<Home />} />
             </Route>
           </Route>
