@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { TbX } from 'react-icons/tb';
 import { useDispatch, useSelector } from 'react-redux';
 import { navActions } from '../../redux/navbar/navSlice';
+import { logOutAuth } from '../../redux/auth/authSlice';
 import './navigation.css';
 
 const links = [
@@ -30,12 +31,16 @@ const links = [
     name: 'Delete doctor',
     path: '/',
   },
+  {
+    name: 'Logout',
+    path: '/logout',
+  },
 ];
 
 const Navigation = () => {
   const dispatch = useDispatch();
   const { isOpen, active } = useSelector((state) => state.navbar);
-
+  const navigate = useNavigate();
   const linkClickHandler = (name) => {
     dispatch(navActions.setActive(name));
     dispatch(navActions.toggle());
@@ -45,6 +50,27 @@ const Navigation = () => {
     if (event.key === 'Enter' || event.key === ' ') {
       linkClickHandler(name);
     }
+  };
+
+  const handleLogoutClick = () => {
+    const logoutHeaders = {
+      'Content-Type': 'application/json',
+      Authorization: localStorage.getItem('token'),
+    };
+    dispatch(logOutAuth(logoutHeaders))
+      .then((response) => {
+        if (response.status === 401) {
+          console.log('sda');
+        } else {
+          const token = localStorage.getItem('token');
+          if (!token) {
+            navigate('/login');
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -62,7 +88,7 @@ const Navigation = () => {
         <div className="line" />
       </div>
 
-      <h1>BookDoc</h1>
+      <h1 id="title">BookDoc</h1>
 
       <ul className={isOpen ? 'open' : ''}>
         <TbX
@@ -80,7 +106,7 @@ const Navigation = () => {
           >
             <button
               type="button"
-              onClick={() => linkClickHandler(link.name)}
+              onClick={() => (link.name === 'Logout' ? handleLogoutClick() : linkClickHandler(link.name))}
               onKeyDown={(event) => keyPressHandler(event, link.name)}
             >
               <Link to={link.path}>{link.name}</Link>

@@ -5,7 +5,7 @@ import config from '../../config';
 const initialState = {
   user: null,
   token: localStorage.getItem('token') || null,
-  status: 'Rejected',
+  status: '',
   isLoading: false,
   error: null,
 };
@@ -51,6 +51,24 @@ export const signUpAuth = createAsyncThunk(
   },
 );
 
+const logoutURl = `${config.apiBaseUrl}${config.logoutEndpoint}`;
+export const logOutAuth = createAsyncThunk(
+  'auth/logout',
+  async (logOutHeaders, thunkAPI) => {
+    try {
+      const response = await axios.delete(logoutURl, {
+        headers: { ...logOutHeaders },
+      });
+      localStorage.setItem('token', '');
+      return response;
+    } catch (error) {
+      localStorage.setItem('token', '');
+      const errorMessage = error.response?.data || 'An error occurred';
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  },
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -83,6 +101,22 @@ const authSlice = createSlice({
         state.status = action.payload.user.status.message;
       })
       .addCase(signUpAuth.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = 'failed';
+        state.status = action.error.message;
+      })
+      .addCase(logOutAuth.pending, (state) => {
+        state.status = 'pending';
+        state.isLoading = true;
+      })
+      .addCase(logOutAuth.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.status = action.payload.message;
+        state.token = null;
+        state.user = [];
+      })
+      .addCase(logOutAuth.rejected, (state, action) => {
+        console.log('logged out');
         state.isLoading = false;
         state.error = 'failed';
         state.status = action.error.message;

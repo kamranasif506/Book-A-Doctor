@@ -12,6 +12,7 @@ import Navigation from './components/navigation';
 import PrivateRoute from './components/auth/PrivateRoute';
 import Register from './components/auth/register';
 import DoctorDetail from './components/doctorDetail';
+import ReservationList from './components/reservations';
 import Appointment from './components/appointment/Appointment';
 import NavAppointment from './components/appointment/NavAppointment';
 import { getDoctors } from './redux/doctors/doctorSlice';
@@ -50,7 +51,9 @@ function App() {
               />
               <Route exact path="/doctors" element={<Home />} />
             </Route>
+            <Route path="/reservations" element={<ReservationList />} />
           </Route>
+
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/addDoctor" element={<AddDoctor />} />
