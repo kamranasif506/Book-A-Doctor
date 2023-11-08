@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// const dataUrl = 'http://localhost:4000/api/v1/doctors/:doctor_id/appointments';
-
 export const getAppointment = createAsyncThunk('reservation/getReservation', async (doctorId) => axios.get(`http://localhost:4000/api/v1/doctors/${doctorId}/appointments`)
   .then((res) => res.data)
   .catch((err) => console.log(err)));
@@ -18,16 +16,6 @@ export const postData = createAsyncThunk('reservation/postData', async (appointm
   body: JSON.stringify(appointment),
 }).then((response) => response.data).catch((err) => console.log(err)));
 
-export const deleteData = createAsyncThunk('appointment/deleteData', async (itemid) => axios.delete(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/McvW73kTCQbVPzcD7S2A/books/${itemid}`, {
-  body: JSON.stringify({
-    item_id: itemid,
-    app_id: 'McvW73kTCQbVPzcD7S2A',
-  }),
-  headers: {
-    'Content-type': 'application/json',
-  },
-}).then((response) => response).catch((err) => console.log(err)));
-
 const initialState = {
   reservation: [],
   isLoading: true,
@@ -36,15 +24,7 @@ const initialState = {
 const appointmentSlice = createSlice({
   name: 'appointment',
   initialState,
-  reducers: {
-    // addAppointment: (state, action) => {
-    //   state.reservation = [...state.books, action.payload];
-    // },
-    // removeAppointment: (state, action) => {
-    //   const bookId = action.payload;
-    //   state.books = state.books.filter((item) => item.item_id !== bookId);
-    // },
-  },
+  reducers: {},
   extraReducers: {
     [getAppointment.pending]: (state) => {
       state.isLoading = true;
@@ -54,16 +34,6 @@ const appointmentSlice = createSlice({
       state.books = action.payload;
     },
     [getAppointment.rejected]: (state) => {
-      state.isLoading = false;
-    },
-    [postData.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [postData.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.books = action.payload;
-    },
-    [postData.rejected]: (state) => {
       state.isLoading = false;
     },
   },
