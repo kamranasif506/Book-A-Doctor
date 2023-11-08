@@ -49,19 +49,11 @@ const appointmentSlice = createSlice({
     [getAppointment.pending]: (state) => {
       state.isLoading = true;
     },
-    [getAppointment.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.books = action.payload;
-    },
     [getAppointment.rejected]: (state) => {
       state.isLoading = false;
     },
     [postData.pending]: (state) => {
       state.isLoading = true;
-    },
-    [postData.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.books = action.payload;
     },
     [postData.rejected]: (state) => {
       state.isLoading = false;

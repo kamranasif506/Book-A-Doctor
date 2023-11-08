@@ -186,3 +186,10 @@
     color: rgb(48 190 29);
   }
 }
+
+/* disabled btn */
+.add-doctor .doc-add-btn:disabled {
+  background-color: #ccc;
+  color: #fff;
+  cursor: not-allowed;
+}
