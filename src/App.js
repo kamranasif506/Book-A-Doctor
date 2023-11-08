@@ -65,28 +65,4 @@ function App() {
   }
 }
 
-// const isAuthed = useSelector((state) => state.auth.token !== null);
-//   return (
-//     <Router>
-//       {isAuthed && <Navigation />}
-//       <Routes>
-//         <Route exact path="/" element={<PrivateRoute />}>
-//           <Route path="/" element={<Home />} />
-//           <Route path="/reserve" element={<NavAppointment />} />
-//           <Route path="/doctors">
-//             <Route exact path="/doctors/:docId/reservation" element={<Appointment />} />
-//             <Route
-//               path="/doctors/:docId"
-//               element={<DoctorDetail />}
-//             />
-//             <Route exact path="/doctors" element={<Home />} />
-//           </Route>
-//         </Route>
-//         <Route path="/register" element={<Register />} />
-//         <Route path="/login" element={<LoginPage />} />
-//         <Route path="/addDoctor" element={<AddDoctor />} />
-//       </Routes>
-//     </Router>
-//   );
-// }
 export default App;
