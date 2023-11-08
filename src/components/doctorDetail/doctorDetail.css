@@ -77,7 +77,7 @@
   background-color: #97bf10c0;
 }
 
-@media (width <=800px) {
+@media (width <= 800px) {
   #doc-detail-section {
     flex-direction: column;
     padding: 1rem;
