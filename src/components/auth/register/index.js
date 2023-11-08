@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import { signUpAuth } from '../../../redux/auth/authSlice';
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
   const errorMessage = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (errorMessage === 'Rejected') {
-      setMessage('Something wron. Please Try again!');
+      swal('Rejected', 'You need to try again', 'error');
     }
     if (errorMessage === 'Signed up sucessfully.') {
       navigate('/');
@@ -36,8 +36,7 @@ const Register = () => {
     <div id="login-container">
       <div className="login-div">
         <h1>BookDoc</h1>
-        {message && <div className="error-message">{message}</div>}
-        <form id="login-form">
+        <form id="login-form" className="mb-4">
           <input
             type="email"
             placeholder="Enter your Email..."

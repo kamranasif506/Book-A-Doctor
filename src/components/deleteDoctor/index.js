@@ -2,25 +2,15 @@ import { React, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteDoctor, getDoctors } from '../../redux/doctors/doctorSlice';
-// import { getDeleteDoctors } from "../../redux/doctors/doctorSlice";
-// import { useDispatch } from "react-redux";
-// import { doctorActions } from "../../redux/doctors/doctorSlice";
 import './deleteDoctor.css';
 
 const DeleteDoctorPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [pending, setPending] = useState('Delete Doctor');
-  //   const dispatch = useDispatch();
-
-  //   const { myDoctors: doctors, docsLoading } = useSelector((state) => state.doctor);
   const { doctor } = useSelector((store) => store.doctor);
   const { isLoading } = useSelector((store) => store.doctor);
-  console.log(doctor);
-  //   const docsRef = useRef();
   const deleteDoctorHandler = (doctorId) => {
-    console.log('this is id');
-    console.log(doctorId);
     setPending('...Deleting Doctor');
     dispatch(deleteDoctor(doctorId));
     dispatch(getDoctors());
@@ -29,10 +19,6 @@ const DeleteDoctorPage = () => {
       setPending('Add Book');
     }, 3000);
   };
-
-  //   useEffect(() => {
-  //     dispatch(getDeleteDoctors());
-  //   }, [dispatch]);
 
   return (
     <section className="delete-doctor">

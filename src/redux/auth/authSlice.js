@@ -18,7 +18,6 @@ export const loginAuth = createAsyncThunk(
   'auth/login',
   async (data, thunkAPI) => {
     try {
-    //   console.log(data);
       const response = await axios.post(loginURl, data, { headers });
       const user = response.data;
       const token = response.headers.authorization;
@@ -37,7 +36,6 @@ export const signUpAuth = createAsyncThunk(
   'auth/signup',
   async (data, thunkAPI) => {
     try {
-    //   console.log(data);
       const response = await axios.post(signupURl, data, { headers });
       const user = response.data;
       const token = response.headers.authorization;
@@ -115,11 +113,10 @@ const authSlice = createSlice({
         state.token = null;
         state.user = [];
       })
-      .addCase(logOutAuth.rejected, (state, action) => {
-        console.log('logged out');
+      .addCase(logOutAuth.rejected, (state) => {
         state.isLoading = false;
         state.error = 'failed';
-        state.status = action.error.message;
+        state.status = 'failed';
       });
   },
 });

@@ -18,13 +18,13 @@ import NavAppointment from './components/appointment/NavAppointment';
 import { getDoctors } from './redux/doctors/doctorSlice';
 import AddDoctor from './components/addDoctor/AddDoctor';
 import DeleteDoctorPage from './components/deleteDoctor';
-// import { getSpecialization } from './redux/specialization/specializationSlice';
+import { getSpecialization } from './redux/specialization/specializationSlice';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDoctors());
-    // dispatch(getSpecialization());
+    dispatch(getSpecialization());
   }, [dispatch]);
   const { isLoading } = useSelector((store) => store.doctor);
 
@@ -65,28 +65,4 @@ function App() {
   }
 }
 
-// const isAuthed = useSelector((state) => state.auth.token !== null);
-//   return (
-//     <Router>
-//       {isAuthed && <Navigation />}
-//       <Routes>
-//         <Route exact path="/" element={<PrivateRoute />}>
-//           <Route path="/" element={<Home />} />
-//           <Route path="/reserve" element={<NavAppointment />} />
-//           <Route path="/doctors">
-//             <Route exact path="/doctors/:docId/reservation" element={<Appointment />} />
-//             <Route
-//               path="/doctors/:docId"
-//               element={<DoctorDetail />}
-//             />
-//             <Route exact path="/doctors" element={<Home />} />
-//           </Route>
-//         </Route>
-//         <Route path="/register" element={<Register />} />
-//         <Route path="/login" element={<LoginPage />} />
-//         <Route path="/addDoctor" element={<AddDoctor />} />
-//       </Routes>
-//     </Router>
-//   );
-// }
 export default App;
