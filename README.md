@@ -114,8 +114,8 @@ Collaborators.
 - LinkedIn: [addisalem seifu](https://www.linkedin.com/in/addisalemseifu/)
 
 👤 **Kamran Asif**
-- GitHub: [](https://github.com/kamranasif506)
-- LinkedIn: [](https://www.linkedin.com/in/kamran-asif)
+- GitHub: [@kamranasif506](https://github.com/kamranasif506)
+- LinkedIn: [@kamran-asif](https://www.linkedin.com/in/kamran-asif)
 
 👤 **Hassan Shakur**
 - GitHub: [@hassanShakur](https://github.com/hassanShakur)
