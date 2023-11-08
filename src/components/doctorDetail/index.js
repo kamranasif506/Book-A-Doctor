@@ -9,6 +9,11 @@ const DoctorDetail = () => {
   const { docId } = useParams();
   const { doctor } = useSelector((store) => store.doctor);
   const filteredDoctors = doctor.filter((doc) => doc.id === +docId);
+  // const specID = filteredDoctors[0].specialization_id;
+  console.log(filteredDoctors[0]);
+  // const { specializations } = useSelector((store) => store.specialization);
+  // const specObject = specializations.filter((spec) => spec.id === specID);
+  // const specName = specObject.name;
 
   const navigate = useNavigate();
 
@@ -25,14 +30,21 @@ const DoctorDetail = () => {
       <div className="doc-details">
         <h2 className="doc-name">{filteredDoctors[0].doctor_name}</h2>
         <p>
-          <span>{filteredDoctors[0].doctor_name}</span>
+          <span>Specialization</span>
+          <span>{filteredDoctors[0].specialization_id}</span>
+        </p>
+        <p>
+          <span>Location</span>
+          <span>{filteredDoctors[0].location}</span>
+        </p>
+        <p>
+          <span>Availability</span>
+          <span>Available</span>
+        </p>
+        <p>
+          <span>Bio</span>
           <span>{filteredDoctors[0].bio}</span>
         </p>
-        {/* <p>
-          <span>Cost</span>
-          <span>{filteredDoctors.cost}</span>
-        </p> */}
-
         <button
           type="button"
           onClick={reservationNavHandler}
