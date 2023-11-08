@@ -24,7 +24,7 @@ const ReservationList = () => {
     // if (reservationList.length <= 0) {
     fetchData();
     // }
-  }, []);
+  });
 
   const customStyles = {
     headCells: {
@@ -69,7 +69,6 @@ const ReservationList = () => {
     appointment_date: appointment.date,
     location: appointment.location,
   }));
-  console.log(result);
   let content;
   if (isLoading) {
     content = <p>Loading...</p>;

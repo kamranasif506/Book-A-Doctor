@@ -8,7 +8,6 @@ const headers = {
 // Create an async thunk to fetch appointments
 export const getSpecialization = createAsyncThunk('specialization/fetch', async () => {
   const response = await axios.get(urlappoint, { headers });
-  console.log(response.data);
   return response.data;
 });
 

@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import { loginAuth } from '../../../redux/auth/authSlice';
 import './login.css';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
   const errorMessage = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (errorMessage === 'Rejected') {
-      setMessage('Login failed. Please check your credentials.');
+      swal('Rejected', 'You need to try again', 'error');
     }
     if (errorMessage === 'Logged in sucessfully.') {
       navigate('/');
@@ -34,8 +34,8 @@ const LoginPage = () => {
       .then(() => {
 
       })
-      .catch((error) => {
-        setMessage(`Login failed. Error: ${error.message}`);
+      .catch(() => {
+
       });
   };
 
@@ -43,8 +43,7 @@ const LoginPage = () => {
     <div id="login-container">
       <div className="login-div">
         <h1>BookDoc</h1>
-        {message && <div className="error-message">{message}</div>}
-        <form id="login-form">
+        <form id="login-form" className="mb-4">
           <input type="email" placeholder="Enter your username..." onChange={(e) => setEmail(e.target.value)} />
           <input type="password" placeholder="Enter your password..." onChange={(e) => setPassword(e.target.value)} />
           <button type="submit" onClick={navigateHomeHandler}>

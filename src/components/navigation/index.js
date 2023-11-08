@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { TbX } from 'react-icons/tb';
 import { useDispatch, useSelector } from 'react-redux';
+import swal from 'sweetalert';
 import { navActions } from '../../redux/navbar/navSlice';
 import { logOutAuth } from '../../redux/auth/authSlice';
 import './navigation.css';
@@ -60,7 +61,7 @@ const Navigation = () => {
     dispatch(logOutAuth(logoutHeaders))
       .then((response) => {
         if (response.status === 401) {
-          console.log('sda');
+          swal('Rejected', 'A Small Problem', 'error');
         } else {
           const token = localStorage.getItem('token');
           if (!token) {
@@ -68,8 +69,7 @@ const Navigation = () => {
           }
         }
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
       });
   };
 

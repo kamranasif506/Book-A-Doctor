@@ -18,13 +18,13 @@ import NavAppointment from './components/appointment/NavAppointment';
 import { getDoctors } from './redux/doctors/doctorSlice';
 import AddDoctor from './components/addDoctor/AddDoctor';
 import DeleteDoctorPage from './components/deleteDoctor';
-// import { getSpecialization } from './redux/specialization/specializationSlice';
+import { getSpecialization } from './redux/specialization/specializationSlice';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDoctors());
-    // dispatch(getSpecialization());
+    dispatch(getSpecialization());
   }, [dispatch]);
   const { isLoading } = useSelector((store) => store.doctor);
 

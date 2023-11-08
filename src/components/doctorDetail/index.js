@@ -9,11 +9,6 @@ const DoctorDetail = () => {
   const { docId } = useParams();
   const { doctor } = useSelector((store) => store.doctor);
   const filteredDoctors = doctor.filter((doc) => doc.id === +docId);
-  // const specID = filteredDoctors[0].specialization_id;
-  console.log(filteredDoctors[0]);
-  // const { specializations } = useSelector((store) => store.specialization);
-  // const specObject = specializations.filter((spec) => spec.id === specID);
-  // const specName = specObject.name;
 
   const navigate = useNavigate();
 

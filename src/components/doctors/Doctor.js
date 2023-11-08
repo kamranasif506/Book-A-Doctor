@@ -1,17 +1,14 @@
 import PropTypes from 'prop-types';
-import { React, useEffect } from 'react';
+import { React } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { navActions } from '../../redux/navbar/navSlice';
-import { getSpecialization } from '../../redux/specialization/specializationSlice';
 import './doctor.css';
 
 const Doctor = ({ doctor }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getSpecialization());
-  }, []);
+
   const docNavigateHandler = () => {
     navigate(`/doctors/${doctor.id}`);
     dispatch(navActions.setActive('doctors'));
