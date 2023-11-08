@@ -4,7 +4,6 @@ import navSlice from './navbar/navSlice';
 import appointmentReducer from './appointments/appointmentSlice';
 import doctorReducer from './doctors/doctorSlice';
 import authReducer from './auth/authSlice';
-import reservationReducer from './reservations/reservationSlice';
 import specializationReducer from './specialization/specializationSlice';
 
 const rootReducer = combineReducers({
