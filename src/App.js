@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import { Provider, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from 'react-router-dom';
-import store from './redux/store';
 import LoginPage from './components/auth/login';
 import Home from './components/home';
 import './App.css';
@@ -17,19 +16,26 @@ import Appointment from './components/appointment/Appointment';
 import NavAppointment from './components/appointment/NavAppointment';
 import { getDoctors } from './redux/doctors/doctorSlice';
 import AddDoctor from './components/addDoctor/AddDoctor';
-import { getSpecialization } from './redux/specialization/specializationSlice';
+// import { getSpecialization } from './redux/specialization/specializationSlice';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log('fetching.........');
     dispatch(getDoctors());
-    dispatch(getSpecialization());
-  }, []);
+    // dispatch(getSpecialization());
+  }, [dispatch]);
+  const { isLoading } = useSelector((store) => store.doctor);
+
   const isAuthed = true;
-  // const isAuthed = useSelector((state) => state.auth.token !== null);
-  return (
-    <Provider store={store}>
+  if (isLoading) {
+    return (
+      <div className="loading">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+  if (!isLoading) {
+    return (
       <Router>
         {isAuthed && <Navigation />}
         <Routes>
@@ -50,7 +56,32 @@ function App() {
           <Route path="/addDoctor" element={<AddDoctor />} />
         </Routes>
       </Router>
-    </Provider>
-  );
+    );
+  }
 }
+
+// const isAuthed = useSelector((state) => state.auth.token !== null);
+//   return (
+//     <Router>
+//       {isAuthed && <Navigation />}
+//       <Routes>
+//         <Route exact path="/" element={<PrivateRoute />}>
+//           <Route path="/" element={<Home />} />
+//           <Route path="/reserve" element={<NavAppointment />} />
+//           <Route path="/doctors">
+//             <Route exact path="/doctors/:docId/reservation" element={<Appointment />} />
+//             <Route
+//               path="/doctors/:docId"
+//               element={<DoctorDetail />}
+//             />
+//             <Route exact path="/doctors" element={<Home />} />
+//           </Route>
+//         </Route>
+//         <Route path="/register" element={<Register />} />
+//         <Route path="/login" element={<LoginPage />} />
+//         <Route path="/addDoctor" element={<AddDoctor />} />
+//       </Routes>
+//     </Router>
+//   );
+// }
 export default App;

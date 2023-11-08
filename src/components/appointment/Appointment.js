@@ -1,31 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import './appointment.css';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { TimePicker, DatePicker } from '@mui/x-date-pickers';
 import { postData } from '../../redux/appointments/appointmentSlice';
-import { getDoctors } from '../../redux/doctors/doctorSlice';
 
 export default function Appointment() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  useEffect(() => {
-    console.log('fetching.........');
-    dispatch(getDoctors());
-  }, []);
-  const { appointment } = useSelector((store) => store);
-  console.log(appointment);
   const { docId } = useParams();
-  console.log(docId);
   const [location, setLocation] = useState('Select Location');
   const [time, setTime] = useState('10:00');
-  const [date, setDate] = useState('10:00');
+  const [date, setDate] = useState(new Date(Date.now()));
   const [pending, setPending] = useState('Add Book');
 
   const reservation = {
     location,
     time,
     date,
-    docId,
+    doctor_id: docId,
   };
 
   console.log(reservation);
@@ -41,6 +34,7 @@ export default function Appointment() {
     setTimeout(() => {
       dispatch(postData(reservation));
       setPending('Add Book');
+      navigate('/reservations');
     }, 1000);
   }
   return (

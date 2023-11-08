@@ -1,31 +1,32 @@
-import React, { useState } from 'react';
+import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './addDoctor.css';
-import { postData } from '../../redux/doctors/doctorSlice';
+import { getDoctors, postData } from '../../redux/doctors/doctorSlice';
 
 export default function AddDoctor() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [city, setLocation] = useState('Select Location');
   const [doctorName, setName] = useState('Name');
   const [specializationId, setSpecialization] = useState('Specialization');
   const [profilePicture, setPicture] = useState('Image');
   const [docBio, setBio] = useState('Doctor bio');
   const [pending, setPending] = useState('Add New Doctor');
-  const { specialization } = useSelector((store) => store.specialization);
+  const { specializations } = useSelector((store) => store.specialization);
+  const doctor = {
+    location: city,
+    doctor_name: doctorName,
+    specialization_id: specializationId,
+    profile_picture: profilePicture,
+    bio: docBio,
+  };
   function postDispatcher() {
-    const doctor = {
-      location: city,
-      doctor_name: doctorName,
-      specialization_id: specializationId,
-      profile_picture: profilePicture,
-      bio: docBio,
-    };
     setPending('...Adding Doctor');
     setTimeout(() => {
       dispatch(postData(doctor));
       setPending('Add Book');
+      dispatch(getDoctors());
       navigate('/doctors');
     }, 1000);
   }
@@ -56,10 +57,11 @@ export default function AddDoctor() {
                 value={specializationId}
                 onChange={(e) => {
                   setSpecialization(e.target.value);
+                  console.log(e.target.value);
                 }}
                 required
               >
-                {specialization.map((option) => (
+                {specializations.map((option) => (
                   <option key={option.value} value={option.id}>
                     {option.name}
                   </option>
