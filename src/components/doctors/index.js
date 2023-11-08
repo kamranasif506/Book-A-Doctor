@@ -6,8 +6,6 @@ import './doctors.css';
 
 const Doctors = () => {
   const { doctor } = useSelector((store) => store.doctor);
-  console.log(`my doctors...${doctor}`);
-  // const photo = 'https://images.unsplash.com/photo-1657551760830-8a90773fa68c?auto=format&fit=crop&q=60&w=800&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZG9jdG9ycyUyMHBob3RvfGVufDB8fDB8fHww';
   const docsRef = useRef();
   const docScrollHandler = (direction) => {
     if (!docsRef.current) return;
