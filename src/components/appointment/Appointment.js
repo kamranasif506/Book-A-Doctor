@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import swal from 'sweetalert';
 import './appointment.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import { TimePicker, DatePicker } from '@mui/x-date-pickers';
@@ -9,9 +10,9 @@ export default function Appointment() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { docId } = useParams();
-  const [location, setLocation] = useState('Select Location');
-  const [time, setTime] = useState('10:00');
-  const [date, setDate] = useState(new Date(Date.now()));
+  const [location, setLocation] = useState(null);
+  const [time, setTime] = useState(null);
+  const [date, setDate] = useState(null);
   const [pending, setPending] = useState('Add Book');
 
   function postDispatcher() {
@@ -21,12 +22,31 @@ export default function Appointment() {
       date,
       docId,
     };
-    setPending('...Reserving');
-    setTimeout(() => {
-      dispatch(postData(reservation));
-      setPending('Add Book');
-      navigate('/reservations');
-    }, 1000);
+    let valid = true;
+    if (reservation.location === null) {
+      swal('No Empty values allowed!');
+      valid = false;
+      navigate(`/doctors/${docId}/appointments`);
+    }
+    if (reservation.time === null) {
+      swal('No Empty values allowed!');
+      valid = false;
+      navigate(`/doctors/${docId}/appointments`);
+    }
+    if (reservation.date === null) {
+      swal('No Empty values allowed!');
+      valid = false;
+      navigate(`/doctors/${docId}/appointments`);
+    }
+    if (valid) {
+      setPending('...Reserving');
+      setTimeout(() => {
+        dispatch(postData(reservation));
+        setPending('Add Book');
+        swal('Appointment Reserved Seccessfully!');
+        navigate('/reservations');
+      }, 1000);
+    }
   }
   return (
     <div className="appointment-container">
@@ -89,7 +109,6 @@ export default function Appointment() {
                       const t = new Date(e).toLocaleTimeString('en-US', { hour12: false });
                       setTime(t);
                     }}
-                    format="HH12:MI:SS AM"
                   />
                 </button>
               </form>
