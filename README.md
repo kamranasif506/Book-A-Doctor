@@ -60,6 +60,8 @@ Book A Doctor - is an Online Doctor Reservation web application designed to prov
 
 Link to the [Kanban Board](https://github.com/users/kamranasif506/projects/7)
 
+Link to the [API Documentation](http://localhost:4000/api-docs/index.html)
+
 All 4 authors have been contributing to this project from start to finish.
 
 You can find the initial snapshot and setup of the Kanban board [here](https://user-images.githubusercontent.com/116703083/281520773-c2c88620-3ece-4598-bddd-0c2c641d4adb.png).
