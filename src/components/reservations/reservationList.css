@@ -1,0 +1,36 @@
+#reservation-div {
+  background-color: aliceblue;
+  height: 100vh;
+}
+
+#reservation-div .intro {
+  display: grid;
+  gap: 1rem;
+  text-align: center;
+}
+
+#reservation-div .intro p {
+  font-size: 1rem;
+  opacity: 0.5;
+}
+
+#doctors {
+  display: flex;
+  gap: 5%;
+  width: 100%;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  box-sizing: content-box;
+  padding: 1rem 2rem;
+}
+
+@media (width <= 800px) {
+  #reservation-div {
+    padding: 1rem;
+  }
+
+  #doctors {
+    gap: 2%;
+    padding: 1rem;
+  }
+}
