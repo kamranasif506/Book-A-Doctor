@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import './addDoctor.css';
 import { getDoctors, postData } from '../../redux/doctors/doctorSlice';
 
-export default function AddDoctor() {
+const AddDoctor = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [city, setLocation] = useState(null);
@@ -16,7 +16,7 @@ export default function AddDoctor() {
   const [pending, setPending] = useState('Add New Doctor');
   const { specializations } = useSelector((store) => store.specialization);
 
-  function postDispatcher() {
+  const postDispatcher = () => {
     const doctor = {
       location: city,
       doctor_name: doctorName,
@@ -152,3 +152,5 @@ export default function AddDoctor() {
     </main>
   );
 }
+
+export default AddDoctor;

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { TimePicker, DatePicker } from '@mui/x-date-pickers';
 import { postData } from '../../redux/appointments/appointmentSlice';
 
-export default function NavAppointment() {
+const NavAppointment = () => {
   const navigate = useNavigate();
   const { doctor } = useSelector((store) => store.doctor);
   const { isLoading } = useSelector((store) => store.doctor);
@@ -25,7 +25,7 @@ export default function NavAppointment() {
     },
   };
 
-  function postDispatcher() {
+  const postDispatcher = () => {
     const reservation = {
       location,
       time,
@@ -173,3 +173,5 @@ export default function NavAppointment() {
     );
   }
 }
+
+export default NavAppointment;

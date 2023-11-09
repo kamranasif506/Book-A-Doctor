@@ -6,7 +6,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { TimePicker, DatePicker } from '@mui/x-date-pickers';
 import { postData } from '../../redux/appointments/appointmentSlice';
 
-export default function Appointment() {
+const Appointment = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { docId } = useParams();
@@ -15,7 +15,7 @@ export default function Appointment() {
   const [date, setDate] = useState(null);
   const [pending, setPending] = useState('Add Book');
 
-  function postDispatcher() {
+  const postDispatcher = () => {
     const reservation = {
       location,
       time,
@@ -129,3 +129,5 @@ export default function Appointment() {
     </div>
   );
 }
+
+export default Appointment;
