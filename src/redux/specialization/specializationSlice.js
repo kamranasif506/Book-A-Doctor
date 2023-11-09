@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const urlappoint = 'http://localhost:4000/api/v1/specializations';
+const urlappoint = 'https://book-doctor-api.onrender.com/api/v1/specializations';
 const headers = {
   Authorization: localStorage.getItem('token'),
 };

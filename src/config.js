@@ -1,5 +1,5 @@
 const config = {
-  apiBaseUrl: 'http://127.0.0.1:4000/',
+  apiBaseUrl: 'https://book-doctor-api.onrender.com/',
   loginEndpoint: 'login',
   signupEndpoint: 'signup',
   logoutEndpoint: 'logout',
