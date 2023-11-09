@@ -1,12 +1,20 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { BsCaretLeft, BsCaretRight } from 'react-icons/bs';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Doctor from './Doctor';
+import { getDoctors } from '../../redux/doctors/doctorSlice';
+import { getSpecialization } from '../../redux/specialization/specializationSlice';
 import './doctors.css';
 
 const Doctors = () => {
+  const dispatch = useDispatch();
   const { doctor } = useSelector((store) => store.doctor);
   const docsRef = useRef();
+
+  useEffect(() => {
+    dispatch(getDoctors());
+    dispatch(getSpecialization());
+  }, []);
   const docScrollHandler = (direction) => {
     if (!docsRef.current) return;
 
