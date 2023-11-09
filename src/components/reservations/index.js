@@ -21,9 +21,7 @@ const ReservationList = () => {
   };
 
   useEffect(() => {
-    // if (reservationList.length <= 0) {
     fetchData();
-    // }
   });
 
   const customStyles = {
