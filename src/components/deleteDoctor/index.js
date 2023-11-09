@@ -15,7 +15,6 @@ const DeleteDoctorPage = () => {
     setPending('...Deleting Doctor');
     await dispatch(deleteDoctor(doctorId));
     await dispatch(getDoctors());
-    // navigate('/');
     setTimeout(() => {
       setPending('Delete Doctor');
     }, 3000);
