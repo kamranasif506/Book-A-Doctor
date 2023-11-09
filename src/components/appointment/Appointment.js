@@ -79,6 +79,7 @@ const Appointment = () => {
                       setLocation(e.target.value);
                     }}
                   >
+                    <option value="">Select Location</option>
                     <option value="London">London</option>
                     <option value="Paris">Paris</option>
                     <option value="Zuric">Zuric</option>

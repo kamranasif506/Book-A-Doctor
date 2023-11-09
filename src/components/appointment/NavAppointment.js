@@ -32,6 +32,7 @@ const NavAppointment = () => {
       date,
       docId,
     };
+    console.log(reservation);
     let valid = true;
     if (reservation.location === null) {
       swal('No Empty values allowed!');
@@ -103,6 +104,7 @@ const NavAppointment = () => {
                     }}
                     required
                   >
+                    <option value="">Select Doctor</option>
                     {doctor.map((option) => (
                       <option key={option.value} value={option.id}>
                         {option.doctor_name}
@@ -120,6 +122,7 @@ const NavAppointment = () => {
                       setLocation(e.target.value);
                     }}
                   >
+                    <option value="">Select Location</option>
                     <option value="London">London</option>
                     <option value="Paris">Paris</option>
                     <option value="Zuric">Zuric</option>
