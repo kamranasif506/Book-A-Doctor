@@ -32,7 +32,6 @@ const NavAppointment = () => {
       date,
       docId,
     };
-    console.log(reservation);
     let valid = true;
     if (reservation.location === null) {
       swal('No Empty values allowed!');
