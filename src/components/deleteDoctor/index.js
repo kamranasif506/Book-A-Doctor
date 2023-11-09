@@ -1,11 +1,9 @@
 import { React, useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteDoctor, getDoctors } from '../../redux/doctors/doctorSlice';
 import './deleteDoctor.css';
 
 const DeleteDoctorPage = () => {
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const [pending, setPending] = useState('Delete Doctor');
   const { doctor } = useSelector((store) => store.doctor);
