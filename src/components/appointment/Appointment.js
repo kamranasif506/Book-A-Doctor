@@ -47,7 +47,7 @@ const Appointment = () => {
         navigate('/reservations');
       }, 1000);
     }
-  }
+  };
   return (
     <div className="appointment-container">
       <div className="transparent">
@@ -128,6 +128,6 @@ const Appointment = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Appointment;

@@ -98,10 +98,10 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.status = action.payload.user.status.message;
       })
-      .addCase(signUpAuth.rejected, (state, action) => {
+      .addCase(signUpAuth.rejected, (state) => {
         state.isLoading = false;
         state.error = 'failed';
-        state.status = action.error.message;
+        state.status = 'wrong';
       })
       .addCase(logOutAuth.pending, (state) => {
         state.status = 'pending';

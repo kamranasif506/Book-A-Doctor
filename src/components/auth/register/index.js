@@ -12,8 +12,8 @@ const Register = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (errorMessage === 'Rejected') {
-      swal('Rejected', 'You need to try again', 'error');
+    if (errorMessage === 'wrong') {
+      swal('Rejected', 'Try with different Account or check Connection', 'error');
     }
     if (errorMessage === 'Signed up sucessfully.') {
       navigate('/');

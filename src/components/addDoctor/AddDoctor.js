@@ -60,7 +60,7 @@ const AddDoctor = () => {
         navigate('/doctors');
       }, 1000);
     }
-  }
+  };
   return (
     <main className="add-doctor">
       <div className="title-doc"><h1>ADD DOCTOR</h1></div>
@@ -151,6 +151,6 @@ const AddDoctor = () => {
       </div>
     </main>
   );
-}
+};
 
 export default AddDoctor;

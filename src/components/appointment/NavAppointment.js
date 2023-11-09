@@ -62,7 +62,7 @@ const NavAppointment = () => {
         navigate('/reservations');
       }, 1000);
     }
-  }
+  };
   if (isLoading) {
     return (
       <div className="loading">
@@ -70,108 +70,107 @@ const NavAppointment = () => {
       </div>
     );
   }
-  if (!isLoading) {
-    return (
-      <div className="appointment-container">
-        <div className="transparent">
-          <div className="appointent-body">
-            <div className="appointment-detail">
-              <h5 className="appointment-title">
-                BOOK YOUR FAVORITE DOCTOR
-                <span />
-              </h5>
-              <p className="apointment-paragraph">
-                Lorem ipsum dolor sit amet
-                consectetur adipisicing elit.
-                Impedit dicta recusandae officia.
-                Ratione possimus harum optio
-                molestiae adipisci veritatis
-                corporis animi minima itaque
-                neque nulla, praesentium
-                illum odit ea exercitationem.
-              </p>
-              <div className="button-holder">
-                <form action="" className="appointment-form">
-                  <button
-                    className="btn city"
-                    type="button"
-                  >
-                    <select
-                      value={docId}
-                      onChange={(e) => {
-                        setDocId(e.target.value);
-                      }}
-                      required
-                    >
-                      {doctor.map((option) => (
-                        <option key={option.value} value={option.id}>
-                          {option.doctor_name}
-                        </option>
-                      ))}
-                    </select>
-                  </button>
-                  <button
-                    className="btn city"
-                    type="button"
-                  >
-                    <select
-                      value={location}
-                      onChange={(e) => {
-                        setLocation(e.target.value);
-                      }}
-                    >
-                      <option value="London">London</option>
-                      <option value="Paris">Paris</option>
-                      <option value="Zuric">Zuric</option>
-                      <option value="Washington-Dc">Washington-Dc</option>
-                    </select>
-                  </button>
-                  <button
-                    className="btn date"
-                    type="button"
-                  >
-                    {/* eslint-disable-next-line */}
-                    <DatePicker
-                      sx={datePickerSx}
-                      onChange={(e) => {
-                        const d = new Date(e).toLocaleDateString('fr-FR');
-                        setDate(d);
-                      }}
-                    />
-                  </button>
-                  <button
-                    className="btn time"
-                    type="button"
-                  >
-                    {/* eslint-disable-next-line */}
-                    <TimePicker
-                      sx={datePickerSx}
-                      className="time-pik"
-                      value={time}
-                      onChange={(e) => {
-                        const t = new Date(e).toLocaleTimeString('en-US', { hour12: false });
-                        setTime(t);
-                      }}
-                    />
-                  </button>
-                </form>
+
+  return (
+    <div className="appointment-container">
+      <div className="transparent">
+        <div className="appointent-body">
+          <div className="appointment-detail">
+            <h5 className="appointment-title">
+              BOOK YOUR FAVORITE DOCTOR
+              <span />
+            </h5>
+            <p className="apointment-paragraph">
+              Lorem ipsum dolor sit amet
+              consectetur adipisicing elit.
+              Impedit dicta recusandae officia.
+              Ratione possimus harum optio
+              molestiae adipisci veritatis
+              corporis animi minima itaque
+              neque nulla, praesentium
+              illum odit ea exercitationem.
+            </p>
+            <div className="button-holder">
+              <form action="" className="appointment-form">
                 <button
-                  type="submit"
-                  className="btn add-appointment"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    postDispatcher();
-                  }}
+                  className="btn city"
+                  type="button"
                 >
-                  {pending}
+                  <select
+                    value={docId}
+                    onChange={(e) => {
+                      setDocId(e.target.value);
+                    }}
+                    required
+                  >
+                    {doctor.map((option) => (
+                      <option key={option.value} value={option.id}>
+                        {option.doctor_name}
+                      </option>
+                    ))}
+                  </select>
                 </button>
-              </div>
+                <button
+                  className="btn city"
+                  type="button"
+                >
+                  <select
+                    value={location}
+                    onChange={(e) => {
+                      setLocation(e.target.value);
+                    }}
+                  >
+                    <option value="London">London</option>
+                    <option value="Paris">Paris</option>
+                    <option value="Zuric">Zuric</option>
+                    <option value="Washington-Dc">Washington-Dc</option>
+                  </select>
+                </button>
+                <button
+                  className="btn date"
+                  type="button"
+                >
+                  {/* eslint-disable-next-line */}
+                  <DatePicker
+                    sx={datePickerSx}
+                    onChange={(e) => {
+                      const d = new Date(e).toLocaleDateString('fr-FR');
+                      setDate(d);
+                    }}
+                  />
+                </button>
+                <button
+                  className="btn time"
+                  type="button"
+                >
+                  {/* eslint-disable-next-line */}
+                  <TimePicker
+                    sx={datePickerSx}
+                    className="time-pik"
+                    value={time}
+                    onChange={(e) => {
+                      const t = new Date(e).toLocaleTimeString('en-US', { hour12: false });
+                      setTime(t);
+                    }}
+                  />
+                </button>
+              </form>
+              <button
+                type="submit"
+                className="btn add-appointment"
+                onClick={(e) => {
+                  e.preventDefault();
+                  postDispatcher();
+                }}
+              >
+                {pending}
+              </button>
             </div>
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default NavAppointment;

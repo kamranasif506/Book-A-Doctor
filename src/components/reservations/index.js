@@ -22,7 +22,7 @@ const ReservationList = () => {
 
   useEffect(() => {
     fetchData();
-  });
+  }, []);
 
   const customStyles = {
     headCells: {

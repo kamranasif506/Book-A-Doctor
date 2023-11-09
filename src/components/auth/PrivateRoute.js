@@ -9,7 +9,6 @@ const PrivateRoute = () => {
     auth = true;
   }
 
-
   return auth ? <Outlet /> : <Navigate to="/login" />;
 };
 
