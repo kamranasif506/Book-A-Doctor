@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const testsURL = 'http://localhost:8000/api/tests';
+const testsURL = 'https://book-doctor-api.onrender.com/api/tests';
 // import testImage from './../../hack-4.jpg';
 
 export const fetchTests = createAsyncThunk(
