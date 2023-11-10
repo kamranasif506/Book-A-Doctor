@@ -102,7 +102,7 @@ npm start
 ### Live Demo
 
 
-- Live Link [URL](https://book-a-doctor.vercel.app/)
+- Live Link [URL](https://book-a-doctor.onrender.com/)
 
 
 ## 👥 Authors <a name="authors"></a>
