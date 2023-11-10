@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const token = localStorage.getItem('token');
-const urlappoint = 'http://localhost:4000/api/v1/doctors';
+const urlappoint = 'https://book-doctor-api.onrender.com/api/v1/doctors';
 const headers = {
   Authorization: localStorage.getItem('token'),
 };
@@ -12,7 +12,7 @@ export const getDoctors = createAsyncThunk('appointments/fetch', async () => {
   return response.data;
 });
 
-export const postData = createAsyncThunk('doctor/postData', async (doctor, thunkAPI) => axios.post('http://localhost:4000/api/v1/doctors', doctor, {
+export const postData = createAsyncThunk('doctor/postData', async (doctor, thunkAPI) => axios.post('https://book-doctor-api.onrender.com/api/v1/doctors', doctor, {
   headers: {
     'Content-type': 'application/json',
     // eslint-disable-next-line quote-props
@@ -21,7 +21,7 @@ export const postData = createAsyncThunk('doctor/postData', async (doctor, thunk
   body: JSON.stringify(doctor),
 }).then((response) => response.data).catch((err) => thunkAPI.rejectWithValue(err)));
 
-export const deleteDoctor = createAsyncThunk('doctor/deleteDoctor', async (doctorId, thunkAPI) => axios.delete(`http://localhost:4000/api/v1/doctors/${doctorId}`, {
+export const deleteDoctor = createAsyncThunk('doctor/deleteDoctor', async (doctorId, thunkAPI) => axios.delete(`https://book-doctor-api.onrender.com/api/v1/doctors/${doctorId}`, {
   headers: {
     'Content-type': 'application/json',
     Authorization: token,
